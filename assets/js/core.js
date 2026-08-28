@@ -6,6 +6,27 @@
   const formatPrice = value => `${formatNumber(value)} €`;
   const placeholder = "assets/images/car-placeholder.svg";
 
+  function listingId(value) {
+    return String(value || "").match(/\/obiava-(\d+)(?:-|$)/)?.[1] || "";
+  }
+
+  function normalizedImage(value) {
+    if (!value || value === "assets/car-placeholder.svg") return placeholder;
+    return value;
+  }
+
+  function detailUrl(car) {
+    const stableListing = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/.test(car.listingUrl || "")
+      ? car.listingUrl
+      : "";
+    const stableId = /^\d{10,}$/.test(String(car.id || "")) ? String(car.id) : "";
+    return stableListing
+      ? `car.html?listing=${encodeURIComponent(stableListing)}`
+      : stableId
+        ? `car.html?listing=${encodeURIComponent(stableId)}`
+      : `car.html?id=${encodeURIComponent(car.id || "")}`;
+  }
+
   function applyConfig() {
     document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
     document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = config.phoneDisplay);
@@ -26,7 +47,7 @@
   }
 
   function liveImageUrl(car) {
-    if (location.protocol === "file:") return car.image || placeholder;
+    if (location.protocol === "file:" || !car.listingUrl) return normalizedImage(car.image);
     return `/api/image?url=${encodeURIComponent(car.listingUrl)}`;
   }
 
@@ -37,18 +58,18 @@
     const mileage = car.mileageText || `${formatNumber(car.mileage)} км`;
     const fuel = car.fuel || "";
     const gearbox = car.transmission || "";
-    const image = car.imageUrl || liveImageUrl(car);
-    const detailUrl = `car.html?id=${car.id}`;
+    const image = car.imageUrl ? normalizedImage(car.imageUrl) : liveImageUrl(car);
+    const url = detailUrl(car);
 
     return `
       <article class="vehicle-card">
-        <a class="vehicle-image-link" href="${detailUrl}">
-          <img loading="lazy" src="${image}" data-fallback="${car.image || placeholder}" alt="${title}">
+        <a class="vehicle-image-link" href="${url}">
+          <img loading="lazy" src="${image}" data-fallback="${placeholder}" alt="${title}">
           <span class="vehicle-badge">${car.body || car.category || "Автомобил"}</span>
         </a>
         <div class="vehicle-content">
           <span class="vehicle-year">${year}</span>
-          <h3 class="vehicle-title"><a href="${detailUrl}">${title}</a></h3>
+          <h3 class="vehicle-title"><a href="${url}">${title}</a></h3>
           <div class="vehicle-meta">
             <span>${mileage}</span>
             ${fuel ? `<span>${fuel}</span>` : ""}
@@ -56,7 +77,7 @@
           </div>
           <div class="vehicle-footer">
             <strong class="vehicle-price">${price}</strong>
-            <a class="vehicle-open" href="${detailUrl}" aria-label="Отвори автомобила">→</a>
+            <a class="vehicle-open" href="${url}" aria-label="Отвори автомобила">→</a>
           </div>
         </div>
       </article>`;
@@ -64,12 +85,21 @@
 
   function activateImageFallbacks(root = document) {
     root.querySelectorAll("img[data-fallback]").forEach(img => {
+      if (img.dataset.fallbackBound) return;
+      img.dataset.fallbackBound = "1";
       img.addEventListener("error", () => {
-        if (img.dataset.fallbackUsed) return;
-        img.dataset.fallbackUsed = "1";
-        img.src = img.dataset.fallback || placeholder;
-      }, { once: true });
+        if (img.dataset.fallbackActive) return;
+        img.dataset.fallbackActive = "1";
+        img.src = normalizedImage(img.dataset.fallback);
+      });
     });
+  }
+
+  function setImageSource(img, src, fallback = placeholder) {
+    img.dataset.fallback = normalizedImage(fallback);
+    delete img.dataset.fallbackActive;
+    img.src = normalizedImage(src);
+    activateImageFallbacks(img.parentElement || document);
   }
 
   async function getCatalogue() {
@@ -80,12 +110,16 @@
       if (!response.ok) throw new Error("Catalogue API failed");
       const data = await response.json();
       if (!Array.isArray(data.cars) || !data.cars.length) throw new Error("No live cars");
-      return data.cars.map((car, index) => ({
-        ...fallbackCars[index],
-        ...car,
-        id: fallbackCars[index]?.id || car.id || index + 1,
-        listingUrl: car.listingUrl || fallbackCars[index]?.listingUrl
-      }));
+      const fallbackByUrl = new Map(fallbackCars.map(car => [car.listingUrl, car]));
+      return data.cars.map(car => {
+        const backup = fallbackByUrl.get(car.listingUrl) || {};
+        return {
+          ...backup,
+          ...car,
+          id: listingId(car.listingUrl) || String(car.id || backup.id || ""),
+          listingUrl: car.listingUrl || backup.listingUrl
+        };
+      });
     } catch (error) {
       console.warn("Using fallback catalogue:", error);
       return fallbackCars;
@@ -97,9 +131,14 @@
     fallbackCars,
     formatNumber,
     formatPrice,
+    placeholder,
+    listingId,
+    normalizedImage,
+    detailUrl,
     liveImageUrl,
     vehicleCard,
     activateImageFallbacks,
+    setImageSource,
     getCatalogue
   };
 

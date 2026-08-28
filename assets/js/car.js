@@ -1,7 +1,25 @@
 (async () => {
   const core = window.FadiCore;
-  const id = Number(new URLSearchParams(location.search).get("id"));
-  const fallback = core.fallbackCars.find(car => Number(car.id) === id);
+  const params = new URLSearchParams(location.search);
+  const listingParam = params.get("listing") || "";
+  const stableUrl = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/.test(listingParam)
+    ? listingParam
+    : "";
+  const stableId = /^\d{10,}$/.test(listingParam)
+    ? listingParam
+    : core.listingId(stableUrl);
+  const legacyId = Number(params.get("id"));
+  const matchedFallback = stableId
+    ? core.fallbackCars.find(car => car.listingUrl === stableUrl || core.listingId(car.listingUrl) === stableId)
+    : core.fallbackCars.find(car => Number(car.id) === legacyId);
+  const fallback = matchedFallback || (stableUrl
+    ? {
+        id: stableId,
+        displayName: "Автомобил",
+        listingUrl: stableUrl,
+        image: core.placeholder
+      }
+    : null);
 
   const loader = document.querySelector("#detailLoader");
   const page = document.querySelector("#detailPage");
@@ -11,7 +29,7 @@
     return;
   }
 
-  let gallery = [fallback.image || "assets/images/car-placeholder.svg"];
+  let gallery = [core.normalizedImage(fallback.image)];
   let currentImage = 0;
   let liveData = null;
 
@@ -72,9 +90,11 @@
     const thumbnails = get("#galleryThumbnails");
     thumbnails.innerHTML = gallery.map((image, index) =>
       `<button type="button" data-index="${index}" class="${index === currentImage ? "active" : ""}">
-         <img loading="lazy" src="${image}" alt="Снимка ${index + 1}">
+         <img loading="lazy" src="${image}" data-fallback="${core.placeholder}" alt="Снимка ${index + 1}">
        </button>`
     ).join("");
+
+    core.activateImageFallbacks(thumbnails);
 
     thumbnails.querySelectorAll("button").forEach(button => {
       button.addEventListener("click", () => setImage(Number(button.dataset.index)));
@@ -86,10 +106,11 @@
   function setImage(index) {
     if (!gallery.length) return;
     currentImage = (index + gallery.length) % gallery.length;
-    get("#mainGalleryImage").src = gallery[currentImage];
-    get("#mainGalleryImage").alt = `${fallback.displayName} – снимка ${currentImage + 1}`;
+    const mainImage = get("#mainGalleryImage");
+    core.setImageSource(mainImage, gallery[currentImage]);
+    mainImage.alt = `${fallback.displayName} – снимка ${currentImage + 1}`;
     get("#galleryCounter").textContent = `${currentImage + 1} / ${gallery.length}`;
-    get("#lightboxImage").src = gallery[currentImage];
+    core.setImageSource(get("#lightboxImage"), gallery[currentImage]);
 
     document.querySelectorAll("#galleryThumbnails button").forEach((button, buttonIndex) => {
       button.classList.toggle("active", buttonIndex === currentImage);
@@ -99,7 +120,7 @@
   function openLightbox() {
     get("#lightbox").classList.add("open");
     get("#lightbox").setAttribute("aria-hidden", "false");
-    get("#lightboxImage").src = gallery[currentImage];
+    core.setImageSource(get("#lightboxImage"), gallery[currentImage]);
   }
 
   function closeLightbox() {

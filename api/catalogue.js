@@ -47,7 +47,7 @@ function extractCars(html) {
     if (imageUrl.startsWith("//")) imageUrl = `https:${imageUrl}`;
 
     const idMatch = href.match(/obiava-(\d+)/);
-    const id = idMatch ? Number(idMatch[1].slice(-9)) : found.size + 1;
+    const id = idMatch ? idMatch[1] : href;
 
     found.set(href, {
       id,
