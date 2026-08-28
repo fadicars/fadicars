@@ -1,0 +1,16 @@
+{
+  "name": "FADI CARS",
+  "short_name": "FADI CARS",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f4f6",
+  "theme_color": "#111114",
+  "icons": [
+    {
+      "src": "assets/images/fadi-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

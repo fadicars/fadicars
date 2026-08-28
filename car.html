@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111114">
+  <meta name="description" content="Пълна информация и галерия за автомобил от FADI CARS.">
+  <title>Автомобил | FADI CARS</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/images/fadi-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="car">
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html" aria-label="FADI CARS">
+      <span class="logo-symbol">F</span>
+      <span class="logo-text">FADI <b>CARS</b></span>
+    </a>
+
+    <button class="mobile-menu-button" type="button" aria-label="Отвори меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav">
+      <a class="" href="index.html">Начало</a>
+<a class="active" href="cars.html">Автомобили</a>
+<a class="" href="leasing.html">Лизинг</a>
+<a class="" href="services.html">Услуги</a>
+<a class="" href="about.html">За нас</a>
+<a class="" href="contact.html">Контакти</a>
+    </nav>
+
+    <a class="desktop-call" data-phone-link href="#">
+      <span>Продажби</span>
+      <strong data-phone-text>0897 985 999</strong>
+    </a>
+  </div>
+</header>
+  <main>
+    <div class="detail-loader" id="detailLoader"><div class="spinner"></div><p>Зареждаме автомобила...</p></div>
+    <div id="detailPage" hidden>
+      <section class="detail-heading">
+        <div class="container">
+          <div class="breadcrumbs"><a href="cars.html">Автомобили</a><span>›</span><b id="breadcrumbTitle"></b></div>
+          <div class="detail-heading-row">
+            <div><p class="eyebrow">FADI CARS</p><h1 id="detailTitle"></h1><p id="detailSubtitle"></p></div>
+            <div class="detail-heading-price"><span>Цена</span><strong id="detailPrice"></strong><small id="detailVat"></small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <div class="container detail-layout">
+          <div class="gallery-column">
+            <div class="gallery-main">
+              <img id="mainGalleryImage" alt="">
+              <button class="gallery-arrow gallery-prev" id="galleryPrev" type="button">‹</button>
+              <button class="gallery-arrow gallery-next" id="galleryNext" type="button">›</button>
+              <button class="gallery-expand" id="galleryExpand" type="button">Увеличи</button>
+              <span class="gallery-counter" id="galleryCounter"></span>
+            </div>
+            <div class="gallery-thumbnails" id="galleryThumbnails"></div>
+            <p class="gallery-message" id="galleryMessage"></p>
+          </div>
+
+          <aside class="vehicle-sidebar">
+            <div class="sidebar-price"><span>Цена</span><strong id="sidebarPrice"></strong><small id="sidebarVat"></small></div>
+            <div class="seller-card">
+              <span>Продавач</span><h2>FADI CARS</h2><p data-address-text></p>
+              <a class="button button-red full-width" data-phone-link href="#"><span data-phone-text></span></a>
+              <a class="button button-outline full-width" data-map-link href="#" target="_blank" rel="noopener">Карта и адрес</a>
+              <small>Потвърди наличността и цената по телефона.</small>
+            </div>
+          </aside>
+        </div>
+
+        <div class="container information-layout">
+          <div class="information-main">
+            <section class="content-card">
+              <div class="content-card-heading"><h2>Технически данни</h2><span class="data-status" id="dataStatus">АКТУАЛНИ ДАННИ</span></div>
+              <div class="specification-grid" id="specificationGrid"></div>
+            </section>
+            <section class="content-card"><h2>Описание</h2><p class="description-text" id="detailDescription"></p></section>
+            <section class="content-card"><h2>Оборудване</h2><div class="equipment-grid" id="equipmentGrid"></div></section>
+          </div>
+          <aside class="information-note"><strong>Директна връзка</strong><p>Страницата зарежда текущите данни и снимки от публичната обява, но остава достъпна и при временен проблем с източника.</p></aside>
+        </div>
+      </section>
+
+      <section class="related-section">
+        <div class="container">
+          <div class="section-heading"><div><p class="eyebrow">ОЩЕ ПРЕДЛОЖЕНИЯ</p><h2>Подобни автомобили</h2></div><a href="cars.html">Всички автомобили</a></div>
+          <div class="vehicle-grid" id="relatedGrid"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="mobile-car-action">
+    <div><span>Цена</span><strong id="mobileStickyPrice">—</strong></div>
+    <a data-phone-link href="#">Обади се</a>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" type="button">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button">‹</button>
+    <img id="lightboxImage" alt="">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button">›</button>
+  </div>
+
+  <footer class="site-footer">
+  <div class="container footer-main">
+    <div>
+      <a class="logo logo-footer" href="index.html">
+        <span class="logo-symbol">F</span>
+        <span class="logo-text">FADI <b>CARS</b></span>
+      </a>
+      <p>Автомобили в наличност, директен контакт и съдействие при покупка.</p>
+    </div>
+    <div>
+      <h3>Навигация</h3>
+      <a href="cars.html">Автомобили</a>
+      <a href="leasing.html">Лизинг</a>
+      <a href="services.html">Услуги</a>
+      <a href="about.html">За нас</a>
+    </div>
+    <div>
+      <h3>Контакти</h3>
+      <a data-phone-link href="#"><span data-phone-text></span></a>
+      <a data-map-link href="#" target="_blank" rel="noopener"><span data-address-text></span></a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span data-year></span> FADI CARS</span>
+    <span>Потвърди цената и наличността по телефона.</span>
+  </div>
+</footer>
+  <nav class="mobile-bottom-nav" aria-label="Мобилна навигация"><a class=" " href="index.html"><span class="mobile-nav-icon">⌂</span><span>Начало</span></a><a class="active " href="cars.html"><span class="mobile-nav-icon">▦</span><span>Коли</span></a><a class=" primary" href="tel:+359897985999"><span class="mobile-nav-icon">☎</span><span>Обади се</span></a><a class=" " href="leasing.html"><span class="mobile-nav-icon">€</span><span>Лизинг</span></a><a class=" " href="contact.html"><span class="mobile-nav-icon">⌖</span><span>Контакти</span></a></nav>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/cars.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/car.js"></script>
+</body>
+</html>

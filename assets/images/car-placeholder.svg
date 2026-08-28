@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ececee"/>
+  <rect x="0" y="0" width="1200" height="16" fill="#d71920"/>
+  <g fill="none" stroke="#c4c4c8" stroke-width="20">
+    <path d="M230 510h740l-70-160c-20-45-56-68-108-68H440c-49 0-86 23-108 68z"/>
+    <circle cx="390" cy="540" r="65"/>
+    <circle cx="820" cy="540" r="65"/>
+  </g>
+  <text x="600" y="680" text-anchor="middle" fill="#1a1a1d" font-family="Arial, sans-serif" font-size="58" font-weight="700">FADI CARS</text>
+  <text x="600" y="735" text-anchor="middle" fill="#77777e" font-family="Arial, sans-serif" font-size="28">Снимката се зарежда от актуалната обява</text>
+</svg>

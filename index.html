@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111114">
+  <meta name="description" content="FADI CARS – каталог с автомобили, лизинг, услуги и директен контакт в София.">
+  <title>FADI CARS | Автомобили в София</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/images/fadi-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="home">
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html" aria-label="FADI CARS">
+      <span class="logo-symbol">F</span>
+      <span class="logo-text">FADI <b>CARS</b></span>
+    </a>
+
+    <button class="mobile-menu-button" type="button" aria-label="Отвори меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav">
+      <a class="active" href="index.html">Начало</a>
+<a class="" href="cars.html">Автомобили</a>
+<a class="" href="leasing.html">Лизинг</a>
+<a class="" href="services.html">Услуги</a>
+<a class="" href="about.html">За нас</a>
+<a class="" href="contact.html">Контакти</a>
+    </nav>
+
+    <a class="desktop-call" data-phone-link href="#">
+      <span>Продажби</span>
+      <strong data-phone-text>0897 985 999</strong>
+    </a>
+  </div>
+</header>
+  <main>
+    <section class="home-intro">
+      <div class="container">
+        <div class="home-intro-top">
+          <div>
+            <p class="eyebrow">FADI CARS • СОФИЯ</p>
+            <h1>Автомобили в наличност</h1>
+            <p>Търси директно в каталога или разгледай най-новите предложения.</p>
+          </div>
+          <div class="stock-pill"><strong id="homeCarCount">77</strong><span>обяви</span></div>
+        </div>
+
+        <form class="mobile-search-card" id="homeSearchForm">
+          <label>
+            <span>Какъв автомобил търсиш?</span>
+            <input id="homeSearchInput" type="search" placeholder="BMW X5, Audi A6, Mercedes...">
+          </label>
+          <button type="submit">Търси</button>
+        </form>
+
+        <div class="home-actions">
+          <a class="action-tile action-red" href="cars.html">
+            <span class="action-icon">▦</span>
+            <div><strong>Всички автомобили</strong><small>Филтри, цени и снимки</small></div>
+            <b>→</b>
+          </a>
+          <a class="action-tile" href="leasing.html">
+            <span class="action-icon">€</span>
+            <div><strong>Лизинг</strong><small>Възможности за финансиране</small></div>
+            <b>→</b>
+          </a>
+          <a class="action-tile" href="services.html">
+            <span class="action-icon">✓</span>
+            <div><strong>Услуги</strong><small>Съдействие около покупката</small></div>
+            <b>→</b>
+          </a>
+          <a class="action-tile" href="contact.html">
+            <span class="action-icon">⌖</span>
+            <div><strong>Посети ни</strong><small>София, Суходол</small></div>
+            <b>→</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section latest-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">ПОСЛЕДНО ДОБАВЕНИ</p><h2>Актуални предложения</h2></div>
+          <a href="cars.html">Виж всички</a>
+        </div>
+        <div class="mobile-car-rail vehicle-grid" id="latestCars"></div>
+      </div>
+    </section>
+
+    <section class="mobile-promo">
+      <div class="container promo-grid">
+        <div>
+          <p class="eyebrow light">ДИРЕКТЕН КОНТАКТ</p>
+          <h2>Хареса автомобил? Обади се веднага.</h2>
+          <p>Без форми и без чакане. Провери наличност, лизинг и възможност за оглед.</p>
+        </div>
+        <a class="button button-white" data-phone-link href="#"><span data-phone-text></span></a>
+      </div>
+    </section>
+
+    <section class="section home-info">
+      <div class="container info-cards">
+        <article>
+          <span>01</span><h3>Избери автомобил</h3><p>Разгледай каталога, филтрирай и отвори пълната страница.</p>
+        </article>
+        <article>
+          <span>02</span><h3>Свържи се директно</h3><p>Получаваш актуална информация за цена, състояние и наличност.</p>
+        </article>
+        <article>
+          <span>03</span><h3>Оглед и покупка</h3><p>Посети автокъщата и уточни условията за автомобила.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-main">
+    <div>
+      <a class="logo logo-footer" href="index.html">
+        <span class="logo-symbol">F</span>
+        <span class="logo-text">FADI <b>CARS</b></span>
+      </a>
+      <p>Автомобили в наличност, директен контакт и съдействие при покупка.</p>
+    </div>
+    <div>
+      <h3>Навигация</h3>
+      <a href="cars.html">Автомобили</a>
+      <a href="leasing.html">Лизинг</a>
+      <a href="services.html">Услуги</a>
+      <a href="about.html">За нас</a>
+    </div>
+    <div>
+      <h3>Контакти</h3>
+      <a data-phone-link href="#"><span data-phone-text></span></a>
+      <a data-map-link href="#" target="_blank" rel="noopener"><span data-address-text></span></a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span data-year></span> FADI CARS</span>
+    <span>Потвърди цената и наличността по телефона.</span>
+  </div>
+</footer>
+  <nav class="mobile-bottom-nav" aria-label="Мобилна навигация"><a class="active " href="index.html"><span class="mobile-nav-icon">⌂</span><span>Начало</span></a><a class=" " href="cars.html"><span class="mobile-nav-icon">▦</span><span>Коли</span></a><a class=" primary" href="tel:+359897985999"><span class="mobile-nav-icon">☎</span><span>Обади се</span></a><a class=" " href="leasing.html"><span class="mobile-nav-icon">€</span><span>Лизинг</span></a><a class=" " href="contact.html"><span class="mobile-nav-icon">⌖</span><span>Контакти</span></a></nav>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/cars.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>
