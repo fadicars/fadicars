@@ -6,8 +6,6 @@
 - `cars.html` — complete catalogue with mobile filter drawer
 - `car.html` — internal vehicle page and full gallery
 - `leasing.html` — financing information
-- `services.html` — service categories, ready for real packages
-- `about.html` — dealership page
 - `contact.html` — phone, address and map
 
 `catalogue.html` redirects to the new `cars.html` page for compatibility.

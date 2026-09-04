@@ -2,6 +2,10 @@ const cheerio = require("cheerio");
 
 const ALLOWED = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/;
 
+async function decodeHtml(response) {
+  return new TextDecoder("windows-1251").decode(await response.arrayBuffer());
+}
+
 function normalizeImage(url) {
   if (!url) return "";
   let value = String(url).replace(/\\\//g, "/").replace(/&amp;/g, "&");
@@ -59,7 +63,9 @@ function collectImages(html, $) {
     (normalizedHtml.match(pattern) || []).forEach(match => images.add(normalizeImage(match)));
   });
 
-  return [...images].filter(Boolean);
+  const allImages = [...images].filter(Boolean);
+  const largeImages = allImages.filter(image => /\/big1\//.test(image));
+  return largeImages.length ? largeImages : allImages;
 }
 
 function extractDescription(lines) {
@@ -123,7 +129,7 @@ module.exports = async function handler(req, res) {
 
     if (!response.ok) throw new Error(`Listing returned ${response.status}`);
 
-    const html = await response.text();
+    const html = await decodeHtml(response);
     const $ = cheerio.load(html);
     const lines = cleanLines($);
 
@@ -135,6 +141,7 @@ module.exports = async function handler(req, res) {
     title = title
       .replace(/\s*\|\s*Mobile\.bg.*$/i, "")
       .replace(/^\d[\d\s]*\s*€,\s*/, "")
+      .replace(/\s*Обява:\s*\d+\s*$/i, "")
       .trim();
 
     const price = lines.find(line => /^\d[\d\s]*\s*€$/.test(line)) || "";

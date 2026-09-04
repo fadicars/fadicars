@@ -5,6 +5,10 @@ const PAGES = [
   "https://fadicars.mobile.bg/obiavi/avtomobili-dzhipove/p-2?sort=3"
 ];
 
+async function decodeHtml(response) {
+  return new TextDecoder("windows-1251").decode(await response.arrayBuffer());
+}
+
 function normalizeUrl(value) {
   if (!value) return "";
   if (value.startsWith("https://")) return value;
@@ -35,12 +39,12 @@ function extractCars(html) {
     }
 
     const text = container.text().replace(/\s+/g, " ").trim();
-    const priceText = text.match(/\d[\d\s]*\s*€/)?.[0] || "";
+    const priceText = text.match(/(?<![\d.])\d{1,3}(?:[ \u00a0]\d{3})*\s*€/)?.[0] || "";
     const yearText = text.match(/(?:януари|февруари|март|април|май|юни|юли|август|септември|октомври|ноември|декември)\s+\d{4}\s*г\./i)?.[0] || "";
     const mileageText = text.match(/\d[\d\s]*\s*км/)?.[0] || "";
-    const fuel = text.match(/\b(Дизелов|Бензинов|Хибриден|Електрически|Газ\/Бензин)\b/i)?.[0] || "";
-    const transmission = text.match(/\b(Автоматична|Ръчна)\b/i)?.[0] || "";
-    const category = text.match(/\b(Джип|Седан|Хечбек|Комби|Купе|Миниван|Пикап|Ван)\b/i)?.[0] || "";
+    const fuel = text.match(/(Дизелов|Бензинов|Хибриден|Електрически|Газ\/Бензин)/i)?.[0] || "";
+    const transmission = text.match(/(Автоматична|Ръчна)/i)?.[0] || "";
+    const category = text.match(/(Джип|Седан|Хечбек|Комби|Купе|Миниван|Пикап|Ван)/i)?.[0] || "";
 
     const imageElement = container.find('img[src*="photosorg"], img[data-src*="photosorg"]').first();
     let imageUrl = imageElement.attr("src") || imageElement.attr("data-src") || "";
@@ -79,7 +83,7 @@ module.exports = async function handler(req, res) {
         }
       });
       if (!response.ok) throw new Error(`Catalogue page returned ${response.status}`);
-      return response.text();
+      return decodeHtml(response);
     }));
 
     const cars = pages.flatMap(extractCars);

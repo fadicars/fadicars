@@ -5,6 +5,21 @@
   const formatNumber = value => new Intl.NumberFormat("bg-BG").format(Number(value || 0));
   const formatPrice = value => `${formatNumber(value)} €`;
   const placeholder = "assets/images/car-placeholder.svg";
+  const knownBrands = [...new Set(fallbackCars.map(car => car.brand).filter(Boolean))]
+    .sort((a, b) => b.length - a.length);
+
+  function inferVehicleName(title, backup = {}) {
+    if (backup.brand && backup.model) return { brand: backup.brand, model: backup.model };
+    const matchedBrand = knownBrands.find(brand => title.toLowerCase().startsWith(brand.toLowerCase()))
+      || (title.toLowerCase().startsWith("vw ") ? "Volkswagen" : "");
+    const titleBrand = matchedBrand === "Volkswagen" && title.toLowerCase().startsWith("vw ")
+      ? "VW"
+      : matchedBrand;
+    return {
+      brand: backup.brand || matchedBrand,
+      model: backup.model || (titleBrand ? title.slice(titleBrand.length).trim() : title)
+    };
+  }
 
   function listingId(value) {
     return String(value || "").match(/\/obiava-(\d+)(?:-|$)/)?.[1] || "";
@@ -113,9 +128,12 @@
       const fallbackByUrl = new Map(fallbackCars.map(car => [car.listingUrl, car]));
       return data.cars.map(car => {
         const backup = fallbackByUrl.get(car.listingUrl) || {};
+        const name = inferVehicleName(car.title || backup.displayName || "", backup);
         return {
           ...backup,
           ...car,
+          brand: car.brand || name.brand,
+          model: car.model || name.model,
           id: listingId(car.listingUrl) || String(car.id || backup.id || ""),
           listingUrl: car.listingUrl || backup.listingUrl
         };

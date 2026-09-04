@@ -1,5 +1,9 @@
 const ALLOWED = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/;
 
+async function decodeHtml(response) {
+  return new TextDecoder("windows-1251").decode(await response.arrayBuffer());
+}
+
 function normalizeImage(url) {
   let value = String(url || "").replace(/\\\//g, "/").replace(/&amp;/g, "&");
   if (value.startsWith("//")) value = `https:${value}`;
@@ -19,7 +23,7 @@ module.exports = async function handler(req, res) {
     });
     if (!listingResponse.ok) throw new Error(`Listing returned ${listingResponse.status}`);
 
-    const html = (await listingResponse.text()).replace(/\\\//g, "/");
+    const html = (await decodeHtml(listingResponse)).replace(/\\\//g, "/");
     const match =
       html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)?.[1] ||
       html.match(/(?:https?:)?\/\/(?:cdn2|mobistatic\d+)\.focus\.bg\/mobile\/photosorg\/[^"'<>\\\s]+\/big1\/[^"'<>\\\s]+\.(?:webp|jpe?g|png)/i)?.[0];

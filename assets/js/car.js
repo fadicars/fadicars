@@ -82,7 +82,7 @@
       .map(feature => `<div class="equipment-item">${feature}</div>`)
       .join("");
 
-    get("#dataStatus").textContent = live ? "АКТУАЛНИ ДАННИ" : "РЕЗЕРВНИ ДАННИ";
+    get("#dataStatus").textContent = live ? "АКТУАЛНИ ДАННИ" : "ОСНОВНИ ДАННИ";
     get("#dataStatus").classList.toggle("fallback", !live);
   }
 
@@ -180,6 +180,6 @@
   } catch (error) {
     console.warn(error);
     get("#galleryMessage").textContent =
-      "Актуалната галерия временно не може да се зареди. Показваме резервната снимка и данни.";
+      "Актуалната галерия временно не може да се зареди. Потвърдете данните и наличността по телефона.";
   }
 })();

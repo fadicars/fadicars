@@ -8,7 +8,7 @@ The reference was used only for information architecture:
 - separate vehicles page
 - separate leasing page
 - separate services page
-- separate about/contact pages
+- separate contact page
 
 Do not copy AutoHaus visual design.
 
