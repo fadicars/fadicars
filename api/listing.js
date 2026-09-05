@@ -113,6 +113,52 @@ function extractFeatures(lines) {
   return [...new Set(features)].slice(0, 100);
 }
 
+function parseListingHtml(html) {
+  const $ = cheerio.load(html);
+  const lines = cleanLines($);
+
+  let title =
+    $('meta[property="og:title"]').attr("content") ||
+    $("h1").first().text() ||
+    "";
+
+  title = title
+    .replace(/\s*\|\s*Mobile\.bg.*$/i, "")
+    .replace(/^\d[\d\s]*\s*€,\s*/, "")
+    .replace(/\s*Обява:\s*\d+\s*$/i, "")
+    .trim();
+
+  return {
+    title,
+    price: lines.find(line => /^\d[\d\s]*\s*€$/.test(line)) || "",
+    vat: lines.find(line => /ДДС/.test(line)) || "",
+    productionDate: nextValue(lines, "Дата на производство"),
+    fuel: nextValue(lines, "Двигател"),
+    power: nextValue(lines, "Мощност"),
+    euro: nextValue(lines, "Евростандарт"),
+    engine: nextValue(lines, "Кубатура [куб.см]") || nextValue(lines, "Кубатура"),
+    transmission: nextValue(lines, "Скоростна кутия"),
+    mileage: nextValue(lines, "Пробег [км]"),
+    category: nextValue(lines, "Категория"),
+    color: nextValue(lines, "Цвят"),
+    description: extractDescription(lines),
+    features: extractFeatures(lines),
+    images: collectImages(html, $)
+  };
+}
+
+async function fetchListing(url) {
+  const response = await fetch(url, {
+    headers: {
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+      "accept-language": "bg-BG,bg;q=0.9,en;q=0.8"
+    }
+  });
+
+  if (!response.ok) throw new Error(`Listing returned ${response.status}`);
+  return parseListingHtml(await decodeHtml(response));
+}
+
 module.exports = async function handler(req, res) {
   const url = Array.isArray(req.query.url) ? req.query.url[0] : req.query.url;
   if (!url || !ALLOWED.test(url)) {
@@ -120,51 +166,9 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(url, {
-      headers: {
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
-        "accept-language": "bg-BG,bg;q=0.9,en;q=0.8"
-      }
-    });
-
-    if (!response.ok) throw new Error(`Listing returned ${response.status}`);
-
-    const html = await decodeHtml(response);
-    const $ = cheerio.load(html);
-    const lines = cleanLines($);
-
-    let title =
-      $('meta[property="og:title"]').attr("content") ||
-      $("h1").first().text() ||
-      "";
-
-    title = title
-      .replace(/\s*\|\s*Mobile\.bg.*$/i, "")
-      .replace(/^\d[\d\s]*\s*€,\s*/, "")
-      .replace(/\s*Обява:\s*\d+\s*$/i, "")
-      .trim();
-
-    const price = lines.find(line => /^\d[\d\s]*\s*€$/.test(line)) || "";
-    const vat = lines.find(line => /ДДС/.test(line)) || "";
-
-    res.setHeader("Cache-Control", "s-maxage=1800, stale-while-revalidate=86400");
-    return res.status(200).json({
-      title,
-      price,
-      vat,
-      productionDate: nextValue(lines, "Дата на производство"),
-      fuel: nextValue(lines, "Двигател"),
-      power: nextValue(lines, "Мощност"),
-      euro: nextValue(lines, "Евростандарт"),
-      engine: nextValue(lines, "Кубатура [куб.см]") || nextValue(lines, "Кубатура"),
-      transmission: nextValue(lines, "Скоростна кутия"),
-      mileage: nextValue(lines, "Пробег [км]"),
-      category: nextValue(lines, "Категория"),
-      color: nextValue(lines, "Цвят"),
-      description: extractDescription(lines),
-      features: extractFeatures(lines),
-      images: collectImages(html, $)
-    });
+    const listing = await fetchListing(url);
+    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=300");
+    return res.status(200).json(listing);
   } catch (error) {
     return res.status(502).json({
       error: "Could not load listing",
@@ -172,3 +176,6 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+module.exports.fetchListing = fetchListing;
+module.exports.parseListingHtml = parseListingHtml;

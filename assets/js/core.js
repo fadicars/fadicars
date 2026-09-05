@@ -121,20 +121,22 @@
     if (location.protocol === "file:") return fallbackCars;
 
     try {
-      const response = await fetch("/api/catalogue");
+      const response = await fetch("/api/catalogue", { cache: "no-store" });
       if (!response.ok) throw new Error("Catalogue API failed");
       const data = await response.json();
       if (!Array.isArray(data.cars) || !data.cars.length) throw new Error("No live cars");
       const fallbackByUrl = new Map(fallbackCars.map(car => [car.listingUrl, car]));
+      const fallbackById = new Map(fallbackCars.map(car => [listingId(car.listingUrl), car]));
       return data.cars.map(car => {
-        const backup = fallbackByUrl.get(car.listingUrl) || {};
+        const stableId = listingId(car.listingUrl) || String(car.id || "");
+        const backup = fallbackByUrl.get(car.listingUrl) || fallbackById.get(stableId) || {};
         const name = inferVehicleName(car.title || backup.displayName || "", backup);
         return {
           ...backup,
           ...car,
           brand: car.brand || name.brand,
           model: car.model || name.model,
-          id: listingId(car.listingUrl) || String(car.id || backup.id || ""),
+          id: stableId || String(backup.id || ""),
           listingUrl: car.listingUrl || backup.listingUrl
         };
       });

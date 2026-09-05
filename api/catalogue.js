@@ -1,4 +1,5 @@
 const cheerio = require("cheerio");
+const { fetchListing } = require("./listing");
 
 const PAGES = [
   "https://fadicars.mobile.bg/obiavi/avtomobili-dzhipove?sort=3",
@@ -18,6 +19,55 @@ function normalizeUrl(value) {
 
 function parseNumber(value) {
   return Number(String(value || "").replace(/[^\d]/g, "")) || 0;
+}
+
+function normalizedFuel(value) {
+  return String(value || "")
+    .replace("Дизелов", "Дизел")
+    .replace("Бензинов", "Бензин")
+    .replace("Хибриден", "Хибрид");
+}
+
+function mergeListingSummary(summary, listing) {
+  const priceText = listing.price || summary.priceText;
+  const mileageText = listing.mileage || summary.mileageText;
+  const year = parseNumber(listing.productionDate) || summary.year;
+  const primaryImage = Array.isArray(listing.images) ? listing.images[0] : "";
+
+  return {
+    ...summary,
+    title: listing.title || summary.title,
+    price: parseNumber(priceText) || summary.price,
+    priceText,
+    year,
+    mileage: parseNumber(mileageText) || summary.mileage,
+    mileageText,
+    fuel: normalizedFuel(listing.fuel) || summary.fuel,
+    transmission: listing.transmission || summary.transmission,
+    category: listing.category || summary.category,
+    body: listing.category || summary.body,
+    imageUrl: primaryImage || summary.imageUrl
+  };
+}
+
+async function enrichCars(cars, concurrency = 10) {
+  const enriched = new Array(cars.length);
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < cars.length) {
+      const index = nextIndex++;
+      const car = cars[index];
+      try {
+        enriched[index] = mergeListingSummary(car, await fetchListing(car.listingUrl));
+      } catch (_) {
+        enriched[index] = car;
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: Math.min(concurrency, cars.length) }, worker));
+  return enriched;
 }
 
 function extractCars(html) {
@@ -87,10 +137,11 @@ module.exports = async function handler(req, res) {
     }));
 
     const cars = pages.flatMap(extractCars);
-    const unique = [...new Map(cars.map(car => [car.listingUrl, car])).values()];
+    const unique = [...new Map(cars.map(car => [car.id || car.listingUrl, car])).values()];
+    const currentCars = await enrichCars(unique);
 
-    res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate=21600");
-    return res.status(200).json({ cars: unique });
+    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=300");
+    return res.status(200).json({ cars: currentCars });
   } catch (error) {
     return res.status(502).json({
       error: "Could not load catalogue",
@@ -98,3 +149,6 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+module.exports.mergeListingSummary = mergeListingSummary;
+module.exports.enrichCars = enrichCars;
