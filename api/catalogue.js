@@ -1,10 +1,15 @@
 const cheerio = require("cheerio");
 const { fetchListing } = require("./listing");
 
-const PAGES = [
-  "https://fadicars.mobile.bg/obiavi/avtomobili-dzhipove?sort=3",
-  "https://fadicars.mobile.bg/obiavi/avtomobili-dzhipove/p-2?sort=3"
+const CATEGORIES = [
+  "avtomobili-dzhipove",
+  "busove"
 ];
+
+const REQUEST_HEADERS = {
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+  "accept-language": "bg-BG,bg;q=0.9,en;q=0.8"
+};
 
 async function decodeHtml(response) {
   return new TextDecoder("windows-1251").decode(await response.arrayBuffer());
@@ -19,6 +24,27 @@ function normalizeUrl(value) {
 
 function parseNumber(value) {
   return Number(String(value || "").replace(/[^\d]/g, "")) || 0;
+}
+
+function categoryPageUrl(category, page = 1) {
+  const pagePath = page > 1 ? `/p-${page}` : "";
+  return `https://fadicars.mobile.bg/obiavi/${category}${pagePath}?sort=3`;
+}
+
+async function fetchCataloguePage(category, page = 1) {
+  const response = await fetch(categoryPageUrl(category, page), { headers: REQUEST_HEADERS });
+  if (!response.ok) throw new Error(`${category} catalogue page ${page} returned ${response.status}`);
+  return decodeHtml(response);
+}
+
+function cataloguePageCount(html, category) {
+  const $ = cheerio.load(html);
+  let maximum = 1;
+  $(`a[href*="/obiavi/${category}/p-"]`).each((_, anchor) => {
+    const page = Number(($(anchor).attr("href") || "").match(/\/p-(\d+)/)?.[1] || 1);
+    maximum = Math.max(maximum, page);
+  });
+  return maximum;
 }
 
 function normalizedFuel(value) {
@@ -125,16 +151,16 @@ function extractCars(html) {
 
 module.exports = async function handler(req, res) {
   try {
-    const pages = await Promise.all(PAGES.map(async url => {
-      const response = await fetch(url, {
-        headers: {
-          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
-          "accept-language": "bg-BG,bg;q=0.9,en;q=0.8"
-        }
-      });
-      if (!response.ok) throw new Error(`Catalogue page returned ${response.status}`);
-      return decodeHtml(response);
-    }));
+    const firstPages = await Promise.all(CATEGORIES.map(async category => ({
+      category,
+      html: await fetchCataloguePage(category)
+    })));
+    const remainingPages = await Promise.all(firstPages.flatMap(({ category, html }) =>
+      Array.from({ length: cataloguePageCount(html, category) - 1 }, (_, index) =>
+        fetchCataloguePage(category, index + 2)
+      )
+    ));
+    const pages = [...firstPages.map(page => page.html), ...remainingPages];
 
     const cars = pages.flatMap(extractCars);
     const unique = [...new Map(cars.map(car => [car.id || car.listingUrl, car])).values()];
