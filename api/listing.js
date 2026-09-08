@@ -86,31 +86,43 @@ function extractDescription(lines) {
   return result.join("\n").trim();
 }
 
-function extractFeatures(lines) {
-  const headings = new Set(["Безопасност", "Други", "Екстериор", "Защита", "Интериор", "Комфорт"]);
-  const stopHeadings = new Set(["Допълнителна информация", "Контакти с продавача"]);
-  const features = [];
-  let active = false;
+function cleanFeature(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
 
-  for (const line of lines) {
-    if (headings.has(line)) {
-      active = true;
-      continue;
-    }
-    if (active && stopHeadings.has(line)) break;
-    if (!active) continue;
-    if (
-      line.length > 2 &&
-      line.length < 100 &&
-      !/^ФАДИ КАРС$/.test(line) &&
-      !/^Виж всички/.test(line) &&
-      !/^Обява:/.test(line)
-    ) {
-      features.push(line);
-    }
+function textParts($, element, splitCommas = false) {
+  const clone = $(element).clone();
+  clone.find("br").replaceWith("\n");
+  const separator = splitCommas ? /[\n,;•·]+/ : /[\n•·]+/;
+  return clone.text().split(separator).map(cleanFeature).filter(Boolean);
+}
+
+function containerItems($, container) {
+  const semanticChildren = $(container).children("li, div, p, span").toArray();
+  if (!semanticChildren.length) return textParts($, container, true);
+
+  return semanticChildren.flatMap(child => {
+    const nested = $(child).children("li, p, span").toArray();
+    return nested.length
+      ? nested.flatMap(element => textParts($, element))
+      : textParts($, child);
+  });
+}
+
+function extractFeatures($) {
+  const features = [];
+
+  $(".carExtri .items").each((_, container) => {
+    features.push(...containerItems($, container));
+  });
+
+  if (!features.length) {
+    $(".carExtri li, .carExtri p").each((_, element) => {
+      features.push(...textParts($, element));
+    });
   }
 
-  return [...new Set(features)].slice(0, 100);
+  return [...new Set(features)].filter(feature => feature.length < 100).slice(0, 100);
 }
 
 function parseListingHtml(html) {
@@ -142,7 +154,7 @@ function parseListingHtml(html) {
     category: nextValue(lines, "Категория"),
     color: nextValue(lines, "Цвят"),
     description: extractDescription(lines),
-    features: extractFeatures(lines),
+    features: extractFeatures($),
     images: collectImages(html, $)
   };
 }
@@ -167,7 +179,9 @@ module.exports = async function handler(req, res) {
 
   try {
     const listing = await fetchListing(url);
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=300");
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    res.setHeader("CDN-Cache-Control", "no-store");
+    res.setHeader("Vercel-CDN-Cache-Control", "no-store");
     return res.status(200).json(listing);
   } catch (error) {
     return res.status(502).json({

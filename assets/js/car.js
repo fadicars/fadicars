@@ -78,9 +78,14 @@
       ? data.features
       : ["Свържете се с продавача за пълния списък с оборудване."];
 
-    get("#equipmentGrid").innerHTML = features
-      .map(feature => `<div class="equipment-item">${feature}</div>`)
-      .join("");
+    const equipmentGrid = get("#equipmentGrid");
+    equipmentGrid.replaceChildren();
+    features.forEach(feature => {
+      const item = document.createElement("div");
+      item.className = "equipment-item";
+      item.textContent = feature;
+      equipmentGrid.appendChild(item);
+    });
 
     get("#dataStatus").textContent = live ? "АКТУАЛНИ ДАННИ" : "ОСНОВНИ ДАННИ";
     get("#dataStatus").classList.toggle("fallback", !live);
@@ -162,7 +167,7 @@
   }
 
   try {
-    const response = await fetch(`/api/listing?url=${encodeURIComponent(fallback.listingUrl)}`);
+    const response = await fetch(`/api/listing?url=${encodeURIComponent(fallback.listingUrl)}`, { cache: "no-store" });
     if (!response.ok) throw new Error("Listing API failed");
     liveData = await response.json();
 

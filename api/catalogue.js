@@ -140,7 +140,9 @@ module.exports = async function handler(req, res) {
     const unique = [...new Map(cars.map(car => [car.id || car.listingUrl, car])).values()];
     const currentCars = await enrichCars(unique);
 
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=300");
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    res.setHeader("CDN-Cache-Control", "no-store");
+    res.setHeader("Vercel-CDN-Cache-Control", "no-store");
     return res.status(200).json({ cars: currentCars });
   } catch (error) {
     return res.status(502).json({
