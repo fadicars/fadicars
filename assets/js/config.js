@@ -1,7 +1,9 @@
 window.FADI_CONFIG = {
   dealerName: "FADI CARS",
-  phoneDisplay: "0893 789 933",
+  phoneDisplay: "+359 893 789 933",
   phoneHref: "+359893789933",
+  emailDisplay: "fadicars11@abv.bg",
+  emailHref: "fadicars11@abv.bg",
   city: "София",
   district: "Суходол",
   address: "ул. Околовръстен път Суходол 899",

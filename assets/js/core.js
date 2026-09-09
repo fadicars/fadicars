@@ -46,6 +46,8 @@
     document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
     document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = config.phoneDisplay);
     document.querySelectorAll("[data-phone-link]").forEach(el => el.href = `tel:${config.phoneHref}`);
+    document.querySelectorAll("[data-email-text]").forEach(el => el.textContent = config.emailDisplay);
+    document.querySelectorAll("[data-email-link]").forEach(el => el.href = `mailto:${config.emailHref}`);
     document.querySelectorAll("[data-map-link]").forEach(el => el.href = config.mapUrl);
     document.querySelectorAll("[data-address-text]").forEach(el => {
       el.textContent = `${config.city}, ${config.district}, ${config.address}`;
