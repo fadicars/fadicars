@@ -10,6 +10,8 @@
   <link rel="icon" href="assets/images/fadi-icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://mobistatic2.focus.bg">
+  <link rel="preconnect" href="https://cdn2.focus.bg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -113,7 +115,12 @@
           </label>
         </div>
 
-        <div class="vehicle-grid catalogue-grid" id="catalogueGrid"></div>
+        <div class="vehicle-grid catalogue-grid" id="catalogueGrid" aria-live="polite">
+          <article class="vehicle-card catalogue-skeleton" aria-hidden="true"><div class="vehicle-image-link"></div><div class="vehicle-content"><span></span><strong></strong><i></i><i></i></div></article>
+          <article class="vehicle-card catalogue-skeleton" aria-hidden="true"><div class="vehicle-image-link"></div><div class="vehicle-content"><span></span><strong></strong><i></i><i></i></div></article>
+          <article class="vehicle-card catalogue-skeleton" aria-hidden="true"><div class="vehicle-image-link"></div><div class="vehicle-content"><span></span><strong></strong><i></i><i></i></div></article>
+          <article class="vehicle-card catalogue-skeleton" aria-hidden="true"><div class="vehicle-image-link"></div><div class="vehicle-content"><span></span><strong></strong><i></i><i></i></div></article>
+        </div>
         <div class="pagination" id="pagination"></div>
         <div class="empty-state" id="emptyState">Няма автомобили по избраните критерии.</div>
       </div>

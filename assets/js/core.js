@@ -79,7 +79,7 @@
     return `
       <article class="vehicle-card">
         <a class="vehicle-image-link" href="${url}">
-          <img loading="${index < 4 ? "eager" : "lazy"}"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
+          <img loading="${index < 4 ? "eager" : "lazy"}" decoding="async"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
           <span class="vehicle-badge">${car.body || car.category || "Автомобил"}</span>
         </a>
         <div class="vehicle-content">

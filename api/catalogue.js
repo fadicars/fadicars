@@ -139,8 +139,8 @@ module.exports = async function handler(req, res) {
   try {
     const currentCars = await loadCatalogue();
 
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=180, stale-while-revalidate=60");
-    res.setHeader("Vercel-CDN-Cache-Control", "max-age=180, stale-while-revalidate=60");
+    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=60");
+    res.setHeader("Vercel-CDN-Cache-Control", "max-age=300, stale-while-revalidate=60");
     return res.status(200).json({ cars: currentCars });
   } catch (error) {
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
