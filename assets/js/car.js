@@ -133,10 +133,51 @@
     get("#lightbox").setAttribute("aria-hidden", "true");
   }
 
+  const mainGalleryImage = get("#mainGalleryImage");
+  const swipeThreshold = 48;
+  let gestureStart = null;
+  let suppressGalleryClick = false;
+
+  mainGalleryImage.addEventListener("dragstart", event => event.preventDefault());
+  mainGalleryImage.addEventListener("pointerdown", event => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    gestureStart = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    if (event.pointerType === "mouse") mainGalleryImage.setPointerCapture(event.pointerId);
+  });
+  mainGalleryImage.addEventListener("pointerup", event => {
+    if (!gestureStart || gestureStart.pointerId !== event.pointerId) return;
+
+    const horizontal = event.clientX - gestureStart.x;
+    const vertical = event.clientY - gestureStart.y;
+    gestureStart = null;
+
+    if (Math.abs(horizontal) < swipeThreshold || Math.abs(horizontal) <= Math.abs(vertical) * 1.25) return;
+
+    suppressGalleryClick = true;
+    setImage(currentImage + (horizontal < 0 ? 1 : -1));
+    window.setTimeout(() => { suppressGalleryClick = false; }, 350);
+  });
+  mainGalleryImage.addEventListener("pointercancel", () => {
+    gestureStart = null;
+  });
+  mainGalleryImage.addEventListener("click", event => {
+    if (suppressGalleryClick) {
+      event.preventDefault();
+      suppressGalleryClick = false;
+      return;
+    }
+    openLightbox();
+  });
+
+  get("#vehicleNavLink").addEventListener("click", event => {
+    event.preventDefault();
+    const galleryTop = get("#vehicleGallery").getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top: Math.max(0, galleryTop), behavior: "smooth" });
+  });
+
   get("#galleryPrev").addEventListener("click", () => setImage(currentImage - 1));
   get("#galleryNext").addEventListener("click", () => setImage(currentImage + 1));
   get("#galleryExpand").addEventListener("click", openLightbox);
-  get("#mainGalleryImage").addEventListener("click", openLightbox);
   get("#lightboxClose").addEventListener("click", closeLightbox);
   get("#lightboxPrev").addEventListener("click", () => setImage(currentImage - 1));
   get("#lightboxNext").addEventListener("click", () => setImage(currentImage + 1));
