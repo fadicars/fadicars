@@ -66,7 +66,7 @@
     return `/api/image?url=${encodeURIComponent(car.listingUrl)}`;
   }
 
-  function vehicleCard(car) {
+  function vehicleCard(car, index = 0) {
     const title = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
     const price = car.priceText || formatPrice(car.price);
     const year = car.year || "";
@@ -79,7 +79,7 @@
     return `
       <article class="vehicle-card">
         <a class="vehicle-image-link" href="${url}">
-          <img loading="lazy" src="${image}" data-fallback="${placeholder}" alt="${title}">
+          <img loading="${index < 4 ? "eager" : "lazy"}"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
           <span class="vehicle-badge">${car.body || car.category || "Автомобил"}</span>
         </a>
         <div class="vehicle-content">
@@ -117,11 +117,13 @@
     activateImageFallbacks(img.parentElement || document);
   }
 
-  async function getCatalogue() {
+  let cataloguePromise;
+
+  async function loadCatalogue() {
     if (location.protocol === "file:") return fallbackCars;
 
     try {
-      const response = await fetch("/api/catalogue", { cache: "no-store" });
+      const response = await fetch("/api/catalogue");
       if (!response.ok) throw new Error("Catalogue API failed");
       const data = await response.json();
       if (!Array.isArray(data.cars) || !data.cars.length) throw new Error("No live cars");
@@ -144,6 +146,11 @@
       console.warn("Using fallback catalogue:", error);
       return fallbackCars;
     }
+  }
+
+  function getCatalogue() {
+    if (!cataloguePromise) cataloguePromise = loadCatalogue();
+    return cataloguePromise;
   }
 
   window.FadiCore = {
