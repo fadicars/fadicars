@@ -18,7 +18,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11787322526485504-nissan-note",
     "displayName": "Nissan Note",
-    "detailUrl": "/car?id=1"
+    "detailUrl": "/car/11787322526485504"
   },
   {
     "id": 2,
@@ -39,7 +39,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11787733197595767-opel-astra-1-6",
     "displayName": "Opel Astra 1.6",
-    "detailUrl": "/car?id=2"
+    "detailUrl": "/car/11787733197595767"
   },
   {
     "id": 3,
@@ -60,7 +60,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11757077106878181-toyota-avensis-benzin-metan",
     "displayName": "Toyota Avensis Бензин/Метан",
-    "detailUrl": "/car?id=3"
+    "detailUrl": "/car/11757077106878181"
   },
   {
     "id": 4,
@@ -81,7 +81,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11784627727727458-bmw-523-sobstven-lizing",
     "displayName": "BMW 523",
-    "detailUrl": "/car?id=4"
+    "detailUrl": "/car/11784627727727458"
   },
   {
     "id": 5,
@@ -102,7 +102,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11786872775785635-audi-a3",
     "displayName": "Audi A3",
-    "detailUrl": "/car?id=5"
+    "detailUrl": "/car/11786872775785635"
   },
   {
     "id": 6,
@@ -123,7 +123,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11784109813434088-bmw-320",
     "displayName": "BMW 320",
-    "detailUrl": "/car?id=6"
+    "detailUrl": "/car/11784109813434088"
   },
   {
     "id": 7,
@@ -144,7 +144,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11785584492059992-vw-passat",
     "displayName": "Volkswagen Passat",
-    "detailUrl": "/car?id=7"
+    "detailUrl": "/car/11785584492059992"
   },
   {
     "id": 8,
@@ -165,7 +165,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11732805576609633-vw-touran-2-0-lizing",
     "displayName": "Volkswagen Touran 2.0",
-    "detailUrl": "/car?id=8"
+    "detailUrl": "/car/11732805576609633"
   },
   {
     "id": 9,
@@ -186,7 +186,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11745954108443985-fiat-qubo-1-3-lizing",
     "displayName": "Fiat Qubo 1.3",
-    "detailUrl": "/car?id=9"
+    "detailUrl": "/car/11745954108443985"
   },
   {
     "id": 10,
@@ -207,7 +207,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11787900850710742-bmw-118-sobstven-lizing",
     "displayName": "BMW 118",
-    "detailUrl": "/car?id=10"
+    "detailUrl": "/car/11787900850710742"
   },
   {
     "id": 11,
@@ -228,7 +228,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11778506190392042-renault-laguna",
     "displayName": "Renault Laguna",
-    "detailUrl": "/car?id=11"
+    "detailUrl": "/car/11778506190392042"
   },
   {
     "id": 12,
@@ -249,7 +249,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11757754410854756-peugeot-308",
     "displayName": "Peugeot 308",
-    "detailUrl": "/car?id=12"
+    "detailUrl": "/car/11757754410854756"
   },
   {
     "id": 13,
@@ -270,7 +270,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11786089704626318-bmw-520",
     "displayName": "BMW 520",
-    "detailUrl": "/car?id=13"
+    "detailUrl": "/car/11786089704626318"
   },
   {
     "id": 14,
@@ -291,7 +291,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11784620186678996-bmw-120-d-top-sobstven-lizing",
     "displayName": "BMW 120d",
-    "detailUrl": "/car?id=14"
+    "detailUrl": "/car/11784620186678996"
   },
   {
     "id": 15,
@@ -312,7 +312,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11775654813995334-audi-a6-sobstven-lizing-100-odobrenie",
     "displayName": "Audi A6",
-    "detailUrl": "/car?id=15"
+    "detailUrl": "/car/11775654813995334"
   },
   {
     "id": 16,
@@ -333,7 +333,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11781267433264857-bmw-523",
     "displayName": "BMW 523",
-    "detailUrl": "/car?id=16"
+    "detailUrl": "/car/11781267433264857"
   },
   {
     "id": 17,
@@ -354,7 +354,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11781974894584988-fiat-500-top-sobstven-lizing-99000km",
     "displayName": "Fiat 500",
-    "detailUrl": "/car?id=17"
+    "detailUrl": "/car/11781974894584988"
   },
   {
     "id": 18,
@@ -375,7 +375,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11781975886119324-chevrolet-aveo-top-sobstven-lizing",
     "displayName": "Chevrolet Aveo",
-    "detailUrl": "/car?id=18"
+    "detailUrl": "/car/11781975886119324"
   },
   {
     "id": 19,
@@ -396,7 +396,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11784982262605337-audi-a4-sobstven-lizing",
     "displayName": "Audi A4",
-    "detailUrl": "/car?id=19"
+    "detailUrl": "/car/11784982262605337"
   },
   {
     "id": 20,
@@ -417,7 +417,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11783013814773120-audi-a6-top-sobstven-lizing",
     "displayName": "Audi A6",
-    "detailUrl": "/car?id=20"
+    "detailUrl": "/car/11783013814773120"
   },
   {
     "id": 21,
@@ -438,7 +438,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11786879712529481-bmw-525-top-sobstven-lizing-100-odobrenie",
     "displayName": "BMW 525",
-    "detailUrl": "/car?id=21"
+    "detailUrl": "/car/11786879712529481"
   },
   {
     "id": 22,
@@ -459,7 +459,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11787833442906452-audi-a4",
     "displayName": "Audi A4",
-    "detailUrl": "/car?id=22"
+    "detailUrl": "/car/11787833442906452"
   },
   {
     "id": 23,
@@ -480,7 +480,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11772631253707611-audi-a3-top-sobstven-lizing-100-odobrenie",
     "displayName": "Audi A3",
-    "detailUrl": "/car?id=23"
+    "detailUrl": "/car/11772631253707611"
   },
   {
     "id": 24,
@@ -501,7 +501,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11779351413967938-peugeot-308-1-6",
     "displayName": "Peugeot 308 1.6",
-    "detailUrl": "/car?id=24"
+    "detailUrl": "/car/11779351413967938"
   },
   {
     "id": 25,
@@ -522,7 +522,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11779453441061493-dacia-lodgy-gaz-benzin-top-sobstven-lizing",
     "displayName": "Dacia Lodgy Газ/Бензин",
-    "detailUrl": "/car?id=25"
+    "detailUrl": "/car/11779453441061493"
   },
   {
     "id": 26,
@@ -543,7 +543,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11785585485037244-mercedes-benz-c-320",
     "displayName": "Mercedes-Benz C 320",
-    "detailUrl": "/car?id=26"
+    "detailUrl": "/car/11785585485037244"
   },
   {
     "id": 27,
@@ -564,7 +564,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11760109456637066-bmw-320-2-0",
     "displayName": "BMW 320 2.0",
-    "detailUrl": "/car?id=27"
+    "detailUrl": "/car/11760109456637066"
   },
   {
     "id": 28,
@@ -585,7 +585,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21772567277965867-bmw-x1-2-0d-sddrive-x-line-facelift-lizing-100-odobrenie",
     "displayName": "BMW X1 2.0D X-Line",
-    "detailUrl": "/car?id=28"
+    "detailUrl": "/car/21772567277965867"
   },
   {
     "id": 29,
@@ -606,7 +606,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21766085848761501-infiniti-fx-30-3-0-ds",
     "displayName": "Infiniti FX 30 3.0 dS",
-    "detailUrl": "/car?id=29"
+    "detailUrl": "/car/21766085848761501"
   },
   {
     "id": 30,
@@ -627,7 +627,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11786525975155846-mercedes-benz-c-220-top-sobstven-lizing-smenena-veriga",
     "displayName": "Mercedes-Benz C 220",
-    "detailUrl": "/car?id=30"
+    "detailUrl": "/car/11786525975155846"
   },
   {
     "id": 31,
@@ -648,7 +648,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21768489820621935-ford-kuga-top-sobstven-lizing",
     "displayName": "Ford Kuga",
-    "detailUrl": "/car?id=31"
+    "detailUrl": "/car/21768489820621935"
   },
   {
     "id": 32,
@@ -669,7 +669,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11772541842189673-dacia-dokker-top-sobstven-lizing",
     "displayName": "Dacia Dokker",
-    "detailUrl": "/car?id=32"
+    "detailUrl": "/car/11772541842189673"
   },
   {
     "id": 33,
@@ -690,7 +690,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21782206249726934-chevrolet-blazer",
     "displayName": "Chevrolet Blazer",
-    "detailUrl": "/car?id=33"
+    "detailUrl": "/car/21782206249726934"
   },
   {
     "id": 34,
@@ -711,7 +711,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21784203911919186-mercedes-benz-ml-280",
     "displayName": "Mercedes-Benz ML 280",
-    "detailUrl": "/car?id=34"
+    "detailUrl": "/car/21784203911919186"
   },
   {
     "id": 35,
@@ -732,7 +732,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11734016523334929-audi-a8-4-2-tdi-sobstven-lizing",
     "displayName": "Audi A8 4.2 TDI",
-    "detailUrl": "/car?id=35"
+    "detailUrl": "/car/11734016523334929"
   },
   {
     "id": 36,
@@ -753,7 +753,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21750509951933036-mazda-cx-3-top-sobstven-lizing",
     "displayName": "Mazda CX-3",
-    "detailUrl": "/car?id=36"
+    "detailUrl": "/car/21750509951933036"
   },
   {
     "id": 37,
@@ -774,7 +774,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11777379477473032-audi-a8-sobstven-lizing-face-top",
     "displayName": "Audi A8 4.2 TDI Face",
-    "detailUrl": "/car?id=37"
+    "detailUrl": "/car/11777379477473032"
   },
   {
     "id": 38,
@@ -795,7 +795,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11776260636512172-vw-golf-sobstven-lizing-100-odobrenie",
     "displayName": "Volkswagen Golf Variant",
-    "detailUrl": "/car?id=38"
+    "detailUrl": "/car/11776260636512172"
   },
   {
     "id": 39,
@@ -816,7 +816,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21756713325897428-suzuki-vitara-top-sobstven-lizing",
     "displayName": "Suzuki Vitara",
-    "detailUrl": "/car?id=39"
+    "detailUrl": "/car/21756713325897428"
   },
   {
     "id": 40,
@@ -837,7 +837,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21785585025295203-bmw-x5",
     "displayName": "BMW X5",
-    "detailUrl": "/car?id=40"
+    "detailUrl": "/car/21785585025295203"
   },
   {
     "id": 41,
@@ -858,7 +858,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21782029541435025-bmw-x5-top-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X5 3.0d",
-    "detailUrl": "/car?id=41"
+    "detailUrl": "/car/21782029541435025"
   },
   {
     "id": 42,
@@ -879,7 +879,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21780908925011782-bmw-x5-4-8-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X5 4.8",
-    "detailUrl": "/car?id=42"
+    "detailUrl": "/car/21780908925011782"
   },
   {
     "id": 43,
@@ -900,7 +900,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21779453046147700-audi-q5-top-sobstven-lizing",
     "displayName": "Audi Q5 3.0 TDI",
-    "detailUrl": "/car?id=43"
+    "detailUrl": "/car/21779453046147700"
   },
   {
     "id": 44,
@@ -921,7 +921,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11782738437417242-audi-a5-top-sobstven-lizing",
     "displayName": "Audi A5 3.0 TDI",
-    "detailUrl": "/car?id=44"
+    "detailUrl": "/car/11782738437417242"
   },
   {
     "id": 45,
@@ -942,7 +942,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21783159694616169-porsche-cayenne-sobstven-lizing",
     "displayName": "Porsche Cayenne 3.0 Diesel",
-    "detailUrl": "/car?id=45"
+    "detailUrl": "/car/21783159694616169"
   },
   {
     "id": 46,
@@ -963,7 +963,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11740736647700127-audi-a8-3-0tdi-top-sobstven-lizing-na-100-odobrenie",
     "displayName": "Audi A8 3.0 TDI",
-    "detailUrl": "/car?id=46"
+    "detailUrl": "/car/11740736647700127"
   },
   {
     "id": 47,
@@ -984,7 +984,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11768946529675631-bmw-525-3-0-sobstven-lizing-100-odobrenie",
     "displayName": "BMW 525 3.0",
-    "detailUrl": "/car?id=47"
+    "detailUrl": "/car/11768946529675631"
   },
   {
     "id": 48,
@@ -1005,7 +1005,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11784627403157081-audi-a7-top-sobstven-lizing",
     "displayName": "Audi A7",
-    "detailUrl": "/car?id=48"
+    "detailUrl": "/car/11784627403157081"
   },
   {
     "id": 49,
@@ -1026,7 +1026,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11768476893998191-audi-a3-sobstven-lizing-100-odobrenie",
     "displayName": "Audi A3",
-    "detailUrl": "/car?id=49"
+    "detailUrl": "/car/11768476893998191"
   },
   {
     "id": 50,
@@ -1047,7 +1047,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21747387090277927-audi-q3-2-0-lizing",
     "displayName": "Audi Q3 2.0",
-    "detailUrl": "/car?id=50"
+    "detailUrl": "/car/21747387090277927"
   },
   {
     "id": 51,
@@ -1068,7 +1068,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11756985536035777-bmw-635-m-paket-top-sobstven-lizing",
     "displayName": "BMW 635d M пакет",
-    "detailUrl": "/car?id=51"
+    "detailUrl": "/car/11756985536035777"
   },
   {
     "id": 52,
@@ -1089,7 +1089,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11735911572588800-bmw-525-3-0-204k-s-m-paket-sobstven-lizing",
     "displayName": "BMW 525 3.0 M пакет",
-    "detailUrl": "/car?id=52"
+    "detailUrl": "/car/11735911572588800"
   },
   {
     "id": 53,
@@ -1110,7 +1110,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21774601233615310-bmw-x6-3-0-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X6 3.0",
-    "detailUrl": "/car?id=53"
+    "detailUrl": "/car/21774601233615310"
   },
   {
     "id": 54,
@@ -1131,7 +1131,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21776440552898161-land-rover-range-rover-evoque-2-2-lizing-100-odobrenie-rachni-skorosti",
     "displayName": "Land Rover Range Rover Evoque 2.2",
-    "detailUrl": "/car?id=54"
+    "detailUrl": "/car/21776440552898161"
   },
   {
     "id": 55,
@@ -1152,7 +1152,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11761130040119500-audi-a7-3-0-sobstven-lizing-100-odobrenie",
     "displayName": "Audi A7 3.0 TDI",
-    "detailUrl": "/car?id=55"
+    "detailUrl": "/car/11761130040119500"
   },
   {
     "id": 56,
@@ -1173,7 +1173,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11783004988486483-bmw-530-sobstven-lizing-100-odobrenie",
     "displayName": "BMW 530d",
-    "detailUrl": "/car?id=56"
+    "detailUrl": "/car/11783004988486483"
   },
   {
     "id": 57,
@@ -1194,7 +1194,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11769118352962594-bmw-530-3-0-sobstven-lizing-100-odobrenie",
     "displayName": "BMW 530d Touring",
-    "detailUrl": "/car?id=57"
+    "detailUrl": "/car/11769118352962594"
   },
   {
     "id": 58,
@@ -1215,7 +1215,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21778573001023693-mercedes-benz-ml-250-top-sobstven-lizing",
     "displayName": "Mercedes-Benz ML 250",
-    "detailUrl": "/car?id=58"
+    "detailUrl": "/car/21778573001023693"
   },
   {
     "id": 59,
@@ -1236,7 +1236,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21787400569765381-hyundai-santa-fe-2-2-top-sobstven-lizing-100-odobrenie",
     "displayName": "Hyundai Santa Fe 2.2",
-    "detailUrl": "/car?id=59"
+    "detailUrl": "/car/21787400569765381"
   },
   {
     "id": 60,
@@ -1257,7 +1257,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21785877860519237-bmw-x6",
     "displayName": "BMW X6 4.0d",
-    "detailUrl": "/car?id=60"
+    "detailUrl": "/car/21785877860519237"
   },
   {
     "id": 61,
@@ -1278,7 +1278,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21786089380727254-jeep-grand-cherokee",
     "displayName": "Jeep Grand Cherokee",
-    "detailUrl": "/car?id=61"
+    "detailUrl": "/car/21786089380727254"
   },
   {
     "id": 62,
@@ -1299,7 +1299,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11785878373404133-audi-a6-allroad-3-0-sobstven-lizing-100-odobrenie",
     "displayName": "Audi A6 Allroad 3.0",
-    "detailUrl": "/car?id=62"
+    "detailUrl": "/car/11785878373404133"
   },
   {
     "id": 63,
@@ -1320,7 +1320,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11780052489379601-skoda-superb-top-sobstven-lizing",
     "displayName": "Skoda Superb 4x4",
-    "detailUrl": "/car?id=63"
+    "detailUrl": "/car/11780052489379601"
   },
   {
     "id": 64,
@@ -1341,7 +1341,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21770277261696755-vw-tiguan-4motion-top-sobstven-lizing",
     "displayName": "Volkswagen Tiguan 4Motion",
-    "detailUrl": "/car?id=64"
+    "detailUrl": "/car/21770277261696755"
   },
   {
     "id": 65,
@@ -1362,7 +1362,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21787399900727312-mercedes-benz-ml-350-sobstven-lizing-100-odobrenieu",
     "displayName": "Mercedes-Benz ML 350",
-    "detailUrl": "/car?id=65"
+    "detailUrl": "/car/21787399900727312"
   },
   {
     "id": 66,
@@ -1383,7 +1383,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21787399420651404-bmw-x6-3-0-top-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X6 3.0",
-    "detailUrl": "/car?id=66"
+    "detailUrl": "/car/21787399420651404"
   },
   {
     "id": 67,
@@ -1404,7 +1404,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21785934605266676-bmw-x5-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X5",
-    "detailUrl": "/car?id=67"
+    "detailUrl": "/car/21785934605266676"
   },
   {
     "id": 68,
@@ -1425,7 +1425,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11782738646795084-mercedes-benz-e-220-top-sobstven-lizing",
     "displayName": "Mercedes-Benz E 220",
-    "detailUrl": "/car?id=68"
+    "detailUrl": "/car/11782738646795084"
   },
   {
     "id": 69,
@@ -1446,7 +1446,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21752844735871799-toyota-c-hr-2-0-hybrid-184k-c-bi-color-led-germaniya",
     "displayName": "Toyota C-HR 2.0 Hybrid",
-    "detailUrl": "/car?id=69"
+    "detailUrl": "/car/21752844735871799"
   },
   {
     "id": 70,
@@ -1467,7 +1467,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21781089482241586-porsche-macan-s-top-sobstven-lizing-promotsiya",
     "displayName": "Porsche Macan S Diesel",
-    "detailUrl": "/car?id=70"
+    "detailUrl": "/car/21781089482241586"
   },
   {
     "id": 71,
@@ -1488,7 +1488,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11774858003934366-porsche-panamera-turbo-top-sobstven-lizing",
     "displayName": "Porsche Panamera Turbo",
-    "detailUrl": "/car?id=71"
+    "detailUrl": "/car/11774858003934366"
   },
   {
     "id": 72,
@@ -1509,7 +1509,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-11761585329957355-vw-golf-1-5-top-sobstven-lizing-100-odobrenie",
     "displayName": "Volkswagen Golf 1.5",
-    "detailUrl": "/car?id=72"
+    "detailUrl": "/car/11761585329957355"
   },
   {
     "id": 73,
@@ -1530,7 +1530,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": false,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21782205411389179-land-rover-discovery-landmark-edition-sobstven-lizing-100-odo",
     "displayName": "Land Rover Discovery Landmark Edition",
-    "detailUrl": "/car?id=73"
+    "detailUrl": "/car/21782205411389179"
   },
   {
     "id": 74,
@@ -1551,7 +1551,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21784870259186459-bmw-x6-m-paket-top-sobstven-lizing-100-odobrenie",
     "displayName": "BMW X6 M пакет",
-    "detailUrl": "/car?id=74"
+    "detailUrl": "/car/21784870259186459"
   },
   {
     "id": 75,
@@ -1572,7 +1572,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21780404669914091-mercedes-benz-gle-400-sobstven-lizing-100-odobrenie",
     "displayName": "Mercedes-Benz GLE 400",
-    "detailUrl": "/car?id=75"
+    "detailUrl": "/car/21780404669914091"
   },
   {
     "id": 76,
@@ -1593,7 +1593,7 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21779264606048152-mercedes-benz-gle-coupe-sobstven-lizing-100-odobrenie",
     "displayName": "Mercedes-Benz GLE Coupe",
-    "detailUrl": "/car?id=76"
+    "detailUrl": "/car/21779264606048152"
   },
   {
     "id": 77,
@@ -1614,6 +1614,6 @@ window.FADI_FALLBACK_CARS = [
     "featured": true,
     "listingUrl": "https://fadicars.mobile.bg/obiava-21768564392803609-porsche-macan-s-garantsiya-sobstven-lizing",
     "displayName": "Porsche Macan S 2.9 V6",
-    "detailUrl": "/car?id=77"
+    "detailUrl": "/car/21768564392803609"
   }
 ];

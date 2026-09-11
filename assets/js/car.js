@@ -1,22 +1,34 @@
 (async () => {
   const core = window.FadiCore;
   const params = new URLSearchParams(location.search);
+  const pathId = location.pathname.match(/^\/car\/(\d{10,})\/?$/)?.[1] || "";
   const listingParam = params.get("listing") || "";
   const stableUrl = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/.test(listingParam)
     ? listingParam
     : "";
-  const stableId = /^\d{10,}$/.test(listingParam)
+  const stableId = pathId || (/^\d{10,}$/.test(listingParam)
     ? listingParam
-    : core.listingId(stableUrl);
+    : core.listingId(stableUrl));
   const legacyId = Number(params.get("id"));
-  const matchedFallback = stableId
+  const catalogue = await core.getCatalogue();
+  const matchedCar = stableId
+    ? catalogue.find(car => car.listingUrl === stableUrl || core.listingId(car.listingUrl) === stableId || String(car.id) === stableId)
+    : catalogue.find(car => Number(car.id) === legacyId);
+  const matchedFallback = matchedCar || (stableId
     ? core.fallbackCars.find(car => car.listingUrl === stableUrl || core.listingId(car.listingUrl) === stableId)
-    : core.fallbackCars.find(car => Number(car.id) === legacyId);
-  const fallback = matchedFallback || (stableUrl
+    : core.fallbackCars.find(car => Number(car.id) === legacyId));
+  const resolvedId = stableId || core.listingId(matchedFallback?.listingUrl);
+
+  if (resolvedId && location.pathname !== `/car/${resolvedId}`) {
+    location.replace(`/car/${resolvedId}`);
+    return;
+  }
+
+  const fallback = matchedFallback || (stableId
     ? {
         id: stableId,
         displayName: "Автомобил",
-        listingUrl: stableUrl,
+        listingUrl: stableUrl || `https://fadicars.mobile.bg/obiava-${stableId}`,
         image: core.placeholder
       }
     : null);
@@ -50,6 +62,9 @@
     ].filter(Boolean).join(" • ");
 
     document.title = `${title} | FADI CARS`;
+    const canonicalUrl = `https://www.fadicars.com/car/${resolvedId}`;
+    get("#canonicalUrl").href = canonicalUrl;
+    get("#openGraphUrl").content = canonicalUrl;
     get("#breadcrumbTitle").textContent = title;
     get("#detailTitle").textContent = title;
     get("#detailSubtitle").textContent = subtitle;

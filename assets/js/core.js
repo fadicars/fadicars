@@ -4,7 +4,7 @@
 
   const formatNumber = value => new Intl.NumberFormat("bg-BG").format(Number(value || 0));
   const formatPrice = value => `${formatNumber(value)} €`;
-  const placeholder = "assets/images/car-placeholder.svg";
+  const placeholder = "/assets/images/car-placeholder.svg";
   const knownBrands = [...new Set(fallbackCars.map(car => car.brand).filter(Boolean))]
     .sort((a, b) => b.length - a.length);
 
@@ -31,15 +31,8 @@
   }
 
   function detailUrl(car) {
-    const stableListing = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/.test(car.listingUrl || "")
-      ? car.listingUrl
-      : "";
-    const stableId = /^\d{10,}$/.test(String(car.id || "")) ? String(car.id) : "";
-    return stableListing
-      ? `/car?listing=${encodeURIComponent(stableListing)}`
-      : stableId
-        ? `/car?listing=${encodeURIComponent(stableId)}`
-      : `/car?id=${encodeURIComponent(car.id || "")}`;
+    const stableId = listingId(car.listingUrl) || (/^\d{10,}$/.test(String(car.id || "")) ? String(car.id) : "");
+    return stableId ? `/car/${stableId}` : `/car?id=${encodeURIComponent(car.id || "")}`;
   }
 
   function applyConfig() {

@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/car/:listingId", "destination": "/car" }
+  ],
   "functions": {
     "api/*.js": {
       "maxDuration": 30
