@@ -25,7 +25,7 @@
   const page = document.querySelector("#detailPage");
 
   if (!fallback) {
-    loader.innerHTML = `<h2>Автомобилът не е намерен.</h2><a class="button button-red" href="catalogue.html">Към каталога</a>`;
+    loader.innerHTML = `<h2>Автомобилът не е намерен.</h2><a class="button button-red" href="/cars">Към каталога</a>`;
     return;
   }
 

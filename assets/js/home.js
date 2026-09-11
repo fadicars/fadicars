@@ -14,6 +14,6 @@
   document.querySelector("#homeSearchForm").addEventListener("submit", event => {
     event.preventDefault();
     const query = document.querySelector("#homeSearchInput").value.trim();
-    location.href = `cars.html?q=${encodeURIComponent(query)}`;
+    location.href = `/cars?q=${encodeURIComponent(query)}`;
   });
 })();

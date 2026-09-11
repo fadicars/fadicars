@@ -36,10 +36,10 @@
       : "";
     const stableId = /^\d{10,}$/.test(String(car.id || "")) ? String(car.id) : "";
     return stableListing
-      ? `car.html?listing=${encodeURIComponent(stableListing)}`
+      ? `/car?listing=${encodeURIComponent(stableListing)}`
       : stableId
-        ? `car.html?listing=${encodeURIComponent(stableId)}`
-      : `car.html?id=${encodeURIComponent(car.id || "")}`;
+        ? `/car?listing=${encodeURIComponent(stableId)}`
+      : `/car?id=${encodeURIComponent(car.id || "")}`;
   }
 
   function applyConfig() {
