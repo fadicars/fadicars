@@ -46,6 +46,57 @@
   let liveData = null;
 
   const get = selector => document.querySelector(selector);
+  const shareButtons = document.querySelectorAll("[data-share-vehicle]");
+
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+
+    const input = document.createElement("textarea");
+    input.value = value;
+    input.setAttribute("readonly", "");
+    input.style.cssText = "position:fixed;left:-9999px;opacity:0";
+    document.body.appendChild(input);
+    input.select();
+    const copied = document.execCommand("copy");
+    input.remove();
+    if (!copied) throw new Error("Copy failed");
+  }
+
+  function setShareFeedback(button, copied = false) {
+    const label = button.querySelector("[data-share-label]");
+    if (label) label.textContent = copied ? "Линкът е копиран" : "Сподели";
+  }
+
+  async function shareVehicle(button) {
+    if (button.dataset.shareBusy === "1") return;
+    button.dataset.shareBusy = "1";
+    button.disabled = true;
+
+    try {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: button.dataset.shareTitle, url: button.dataset.shareUrl });
+          return;
+        } catch (error) {
+          if (error?.name === "AbortError") return;
+        }
+      }
+
+      await copyText(button.dataset.shareUrl);
+      setShareFeedback(button, true);
+      window.setTimeout(() => setShareFeedback(button), 1800);
+    } catch (_) {
+      setShareFeedback(button);
+    } finally {
+      button.disabled = false;
+      delete button.dataset.shareBusy;
+    }
+  }
+
+  shareButtons.forEach(button => button.addEventListener("click", () => shareVehicle(button)));
 
   function specification(label, value) {
     if (!value) return "";
@@ -62,9 +113,13 @@
     ].filter(Boolean).join(" • ");
 
     document.title = `${title} | FADI CARS`;
-    const canonicalUrl = `https://www.fadicars.com/car/${resolvedId}`;
+    const canonicalUrl = core.canonicalVehicleUrl(resolvedId);
     get("#canonicalUrl").href = canonicalUrl;
     get("#openGraphUrl").content = canonicalUrl;
+    shareButtons.forEach(button => {
+      button.dataset.shareUrl = canonicalUrl;
+      button.dataset.shareTitle = title;
+    });
     get("#breadcrumbTitle").textContent = title;
     get("#detailTitle").textContent = title;
     get("#detailSubtitle").textContent = subtitle;

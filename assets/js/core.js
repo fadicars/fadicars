@@ -35,6 +35,10 @@
     return stableId ? `/car/${stableId}` : `/car?id=${encodeURIComponent(car.id || "")}`;
   }
 
+  function canonicalVehicleUrl(stableId) {
+    return `https://www.fadicars.com/car/${encodeURIComponent(stableId)}`;
+  }
+
   function applyConfig() {
     document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
     document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = config.phoneDisplay);
@@ -155,6 +159,7 @@
     formatPrice,
     placeholder,
     listingId,
+    canonicalVehicleUrl,
     normalizedImage,
     detailUrl,
     liveImageUrl,
