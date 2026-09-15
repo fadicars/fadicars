@@ -10,7 +10,11 @@
     ? listingParam
     : core.listingId(stableUrl));
   const legacyId = Number(params.get("id"));
-  const catalogue = await core.getCatalogue();
+  let catalogue = core.fallbackCars;
+  try {
+    const loadedCatalogue = await core.getCatalogue();
+    if (Array.isArray(loadedCatalogue)) catalogue = loadedCatalogue;
+  } catch (_) {}
   const matchedCar = stableId
     ? catalogue.find(car => car.listingUrl === stableUrl || core.listingId(car.listingUrl) === stableId || String(car.id) === stableId)
     : catalogue.find(car => Number(car.id) === legacyId);
@@ -97,6 +101,32 @@
   }
 
   shareButtons.forEach(button => button.addEventListener("click", () => shareVehicle(button)));
+
+  function renderVehicleSequence() {
+    const navigation = get("#vehicleSequenceNav");
+    const currentIndex = catalogue.findIndex(car => {
+      const carId = core.listingId(car.listingUrl) || (/^\d{10,}$/.test(String(car.id || "")) ? String(car.id) : "");
+      return carId === resolvedId;
+    });
+
+    if (currentIndex < 0) return;
+
+    const previous = catalogue[currentIndex - 1];
+    const next = catalogue[currentIndex + 1];
+    const setLink = (direction, car) => {
+      if (!car) return;
+      const link = get(`#${direction}VehicleLink`);
+      const title = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
+      link.href = core.detailUrl(car);
+      link.setAttribute("aria-label", `${direction === "previous" ? "Предишен" : "Следващ"} автомобил: ${title}`);
+      get(`#${direction}VehicleTitle`).textContent = title;
+      link.hidden = false;
+    };
+
+    setLink("previous", previous);
+    setLink("next", next);
+    navigation.hidden = !previous && !next;
+  }
 
   function specification(label, value) {
     if (!value) return "";
@@ -260,6 +290,7 @@
 
   renderData({}, false);
   renderGallery();
+  renderVehicleSequence();
 
   const related = core.fallbackCars
     .filter(car => car.id !== fallback.id && (car.brand === fallback.brand || car.body === fallback.body))
