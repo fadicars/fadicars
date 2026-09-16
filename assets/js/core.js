@@ -47,7 +47,7 @@
     document.querySelectorAll("[data-email-link]").forEach(el => el.href = `mailto:${config.emailHref}`);
     document.querySelectorAll("[data-map-link]").forEach(el => el.href = config.mapUrl);
     document.querySelectorAll("[data-address-text]").forEach(el => {
-      el.textContent = `${config.city}, ${config.district}, ${config.address}`;
+      el.textContent = config.address;
     });
   }
 
