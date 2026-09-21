@@ -3,11 +3,12 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
-    { "source": "/car/:listingId", "destination": "/car" }
+    { "source": "/car/:listingId", "destination": "/api/car-page?listingId=:listingId" }
   ],
   "functions": {
     "api/*.js": {
-      "maxDuration": 30
+      "maxDuration": 30,
+      "includeFiles": "car.html"
     }
   }
 }

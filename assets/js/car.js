@@ -133,8 +133,38 @@
     return `<div class="specification-item"><span>${label}</span><strong>${value}</strong></div>`;
   }
 
+  function absoluteImageUrl(value) {
+    let image = String(value || "").trim();
+    if (!image) return "";
+    if (image.startsWith("assets/")) image = `/${image}`;
+    try {
+      return new URL(image, location.origin).href;
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function vehicleMetaDescription(title, data = {}) {
+    const facts = [];
+    const year = data.productionDate || fallback.year;
+    const fuel = data.fuel || fallback.fuel;
+    const mileage = data.mileage || fallback.mileageText || (fallback.mileage ? `${core.formatNumber(fallback.mileage)} км` : "");
+    const price = data.price || fallback.priceText || (fallback.price ? core.formatPrice(fallback.price) : "");
+
+    if (year) facts.push(String(year).match(/г\.?$/) ? String(year) : `${year} г.`);
+    if (fuel) facts.push(fuel);
+    if (mileage) facts.push(mileage);
+    if (price) facts.push(price);
+    return `${title}${facts.length ? ` – ${facts.join(", ")}` : ""}. Автомобил от FADI CARS в София.`;
+  }
+
+  function setMetaContent(selector, value) {
+    const element = get(selector);
+    if (element && value) element.content = value;
+  }
+
   function renderData(data = {}, live = false) {
-    const title = data.title || fallback.displayName;
+    const title = data.title || fallback.title || fallback.displayName || "Автомобил";
     const price = data.price || core.formatPrice(fallback.price);
     const subtitle = [
       data.productionDate || `${fallback.month || ""} ${fallback.year || ""}`.trim(),
@@ -142,10 +172,20 @@
       data.category || fallback.body
     ].filter(Boolean).join(" • ");
 
-    document.title = `${title} | FADI CARS`;
+    const pageTitle = `${title} | FADI CARS`;
+    const description = vehicleMetaDescription(title, data);
+    const image = absoluteImageUrl(data.images?.[0] || fallback.imageUrl || fallback.image);
+    document.title = pageTitle;
     const canonicalUrl = core.canonicalVehicleUrl(resolvedId);
     get("#canonicalUrl").href = canonicalUrl;
     get("#openGraphUrl").content = canonicalUrl;
+    setMetaContent("#metaDescription", description);
+    setMetaContent("#openGraphTitle", pageTitle);
+    setMetaContent("#openGraphDescription", description);
+    setMetaContent("#openGraphImage", image);
+    setMetaContent("#twitterTitle", pageTitle);
+    setMetaContent("#twitterDescription", description);
+    setMetaContent("#twitterImage", image);
     shareButtons.forEach(button => {
       button.dataset.shareUrl = canonicalUrl;
       button.dataset.shareTitle = title;
