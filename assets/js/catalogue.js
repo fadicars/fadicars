@@ -1,5 +1,6 @@
 (async () => {
   const core = window.FadiCore;
+  const i18n = window.FadiI18n;
   const cars = await core.getCatalogue();
   const pageSize = 16;
   let currentPage = 1;
@@ -57,7 +58,7 @@
     .slice(0, 12);
 
   e.brandShortcuts.innerHTML =
-    `<button class="brand-shortcut active" data-brand="" type="button">Всички</button>` +
+    `<button class="brand-shortcut active" data-brand="" type="button">${i18n.t("Всички")}</button>` +
     popularBrands.map(brand => `<button class="brand-shortcut" data-brand="${brand}" type="button">${brand}</button>`).join("");
 
   function openDrawer() {
@@ -191,4 +192,10 @@
   });
 
   render();
+
+  document.addEventListener("fadi:languagechange", () => {
+    const allBrands = e.brandShortcuts.querySelector('[data-brand=""]');
+    if (allBrands) allBrands.textContent = i18n.t("Всички");
+    render();
+  });
 })();

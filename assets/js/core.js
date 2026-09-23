@@ -76,7 +76,7 @@
     const url = detailUrl(car);
 
     return `
-      <article class="vehicle-card">
+      <article class="vehicle-card" data-i18n-ignore>
         <a class="vehicle-image-link" href="${url}">
           <img loading="${index < 4 ? "eager" : "lazy"}" decoding="async"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
           <span class="vehicle-badge">${car.body || car.category || "Автомобил"}</span>
@@ -91,7 +91,7 @@
           </div>
           <div class="vehicle-footer">
             <strong class="vehicle-price">${price}</strong>
-            <a class="vehicle-open" href="${url}" aria-label="Отвори автомобила">→</a>
+            <a class="vehicle-open" href="${url}" aria-label="${window.FadiI18n.t("Отвори автомобила")}">→</a>
           </div>
         </div>
       </article>`;
@@ -171,4 +171,5 @@
 
   applyConfig();
   setupMenu();
+  window.FadiI18n.init();
 })();

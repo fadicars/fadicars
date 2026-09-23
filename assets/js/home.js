@@ -11,6 +11,11 @@
   grid.innerHTML = latest.map(core.vehicleCard).join("");
   core.activateImageFallbacks(grid);
 
+  document.addEventListener("fadi:languagechange", () => {
+    grid.innerHTML = latest.map(core.vehicleCard).join("");
+    core.activateImageFallbacks(grid);
+  });
+
   document.querySelector("#homeSearchForm").addEventListener("submit", event => {
     event.preventDefault();
     const query = document.querySelector("#homeSearchInput").value.trim();

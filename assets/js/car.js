@@ -1,5 +1,7 @@
 (async () => {
   const core = window.FadiCore;
+  const i18n = window.FadiI18n;
+  const tr = value => i18n.t(value);
   const params = new URLSearchParams(location.search);
   const pathId = location.pathname.match(/^\/car\/(\d{10,})\/?$/)?.[1] || "";
   const listingParam = params.get("listing") || "";
@@ -41,13 +43,17 @@
   const page = document.querySelector("#detailPage");
 
   if (!fallback) {
-    loader.innerHTML = `<h2>Автомобилът не е намерен.</h2><a class="button button-red" href="/cars">Към каталога</a>`;
+    loader.innerHTML = `<h2>${tr("Автомобилът не е намерен.")}</h2><a class="button button-red" href="/cars">${tr("Към каталога")}</a>`;
+    document.addEventListener("fadi:languagechange", () => {
+      loader.innerHTML = `<h2>${tr("Автомобилът не е намерен.")}</h2><a class="button button-red" href="/cars">${tr("Към каталога")}</a>`;
+    });
     return;
   }
 
   let gallery = [core.normalizedImage(fallback.image)];
   let currentImage = 0;
   let liveData = null;
+  let galleryMessageState = "";
 
   const get = selector => document.querySelector(selector);
   const shareButtons = document.querySelectorAll("[data-share-vehicle]");
@@ -71,7 +77,7 @@
 
   function setShareFeedback(button, copied = false) {
     const label = button.querySelector("[data-share-label]");
-    if (label) label.textContent = copied ? "Линкът е копиран" : "Сподели";
+    if (label) label.textContent = tr(copied ? "Линкът е копиран" : "Сподели");
   }
 
   async function shareVehicle(button) {
@@ -118,7 +124,7 @@
       const link = get(`#${direction}VehicleLink`);
       const title = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
       link.href = core.detailUrl(car);
-      link.setAttribute("aria-label", `${direction === "previous" ? "Предишен" : "Следващ"} автомобил: ${title}`);
+      link.setAttribute("aria-label", `${direction === "previous" ? tr("Предишен автомобил") : tr("Следващ автомобил")}: ${title}`);
       get(`#${direction}VehicleTitle`).textContent = title;
       link.hidden = false;
     };
@@ -164,7 +170,7 @@
   }
 
   function renderData(data = {}, live = false) {
-    const title = data.title || fallback.title || fallback.displayName || "Автомобил";
+    const title = data.title || fallback.title || fallback.displayName || tr("Автомобил");
     const price = data.price || core.formatPrice(fallback.price);
     const subtitle = [
       data.productionDate || `${fallback.month || ""} ${fallback.year || ""}`.trim(),
@@ -201,22 +207,22 @@
     get("#sidebarVat").textContent = data.vat || "";
 
     get("#specificationGrid").innerHTML =
-      specification("Дата на производство", data.productionDate || `${fallback.month || ""} ${fallback.year}`) +
-      specification("Двигател", data.fuel || fallback.fuel) +
-      specification("Мощност", data.power || `${fallback.power} к.с.`) +
-      specification("Кубатура", data.engine || `${core.formatNumber(fallback.engine)} см³`) +
-      specification("Скоростна кутия", data.transmission || fallback.transmission) +
-      specification("Пробег", data.mileage || `${core.formatNumber(fallback.mileage)} км`) +
-      specification("Категория", data.category || fallback.body) +
-      specification("Цвят", data.color || fallback.color) +
-      specification("Евростандарт", data.euro || fallback.euro);
+      specification(tr("Дата на производство"), data.productionDate || `${fallback.month || ""} ${fallback.year}`) +
+      specification(tr("Двигател"), data.fuel || fallback.fuel) +
+      specification(tr("Мощност"), data.power || `${fallback.power} к.с.`) +
+      specification(tr("Кубатура"), data.engine || `${core.formatNumber(fallback.engine)} см³`) +
+      specification(tr("Скоростна кутия"), data.transmission || fallback.transmission) +
+      specification(tr("Пробег"), data.mileage || `${core.formatNumber(fallback.mileage)} км`) +
+      specification(tr("Категория"), data.category || fallback.body) +
+      specification(tr("Цвят"), data.color || fallback.color) +
+      specification(tr("Евростандарт"), data.euro || fallback.euro);
 
     get("#detailDescription").textContent = data.description ||
-      "За актуална информация относно състоянието, обслужването и условията за покупка се свържете директно с FADI CARS.";
+      tr("За актуална информация относно състоянието, обслужването и условията за покупка се свържете директно с FADI CARS.");
 
     const features = Array.isArray(data.features) && data.features.length
       ? data.features
-      : ["Свържете се с продавача за пълния списък с оборудване."];
+      : [tr("Свържете се с продавача за пълния списък с оборудване.")];
 
     const equipmentGrid = get("#equipmentGrid");
     equipmentGrid.replaceChildren();
@@ -227,7 +233,7 @@
       equipmentGrid.appendChild(item);
     });
 
-    get("#dataStatus").textContent = live ? "АКТУАЛНИ ДАННИ" : "ОСНОВНИ ДАННИ";
+    get("#dataStatus").textContent = tr(live ? "АКТУАЛНИ ДАННИ" : "ОСНОВНИ ДАННИ");
     get("#dataStatus").classList.toggle("fallback", !live);
   }
 
@@ -235,7 +241,7 @@
     const thumbnails = get("#galleryThumbnails");
     thumbnails.innerHTML = gallery.map((image, index) =>
       `<button type="button" data-index="${index}" class="${index === currentImage ? "active" : ""}">
-         <img loading="lazy" src="${image}" data-fallback="${core.placeholder}" alt="Снимка ${index + 1}">
+         <img loading="lazy" src="${image}" data-fallback="${core.placeholder}" alt="${tr("Снимка")} ${index + 1}">
        </button>`
     ).join("");
 
@@ -248,12 +254,24 @@
     setImage(currentImage);
   }
 
+  function renderGalleryMessage() {
+    if (galleryMessageState === "local") {
+      get("#galleryMessage").textContent = tr("Пълната галерия и актуалните данни се зареждат след публикуване във Vercel.");
+    } else if (galleryMessageState === "loaded") {
+      get("#galleryMessage").textContent = gallery.length > 1
+        ? (i18n.getLanguage() === "en" ? `${gallery.length} photos loaded from the current listing.` : `Заредени са ${gallery.length} снимки от актуалната обява.`)
+        : tr("Налична е една снимка за този автомобил.");
+    } else if (galleryMessageState === "error") {
+      get("#galleryMessage").textContent = tr("Актуалната галерия временно не може да се зареди. Потвърдете данните и наличността по телефона.");
+    }
+  }
+
   function setImage(index) {
     if (!gallery.length) return;
     currentImage = (index + gallery.length) % gallery.length;
     const mainImage = get("#mainGalleryImage");
     core.setImageSource(mainImage, gallery[currentImage]);
-    mainImage.alt = `${fallback.displayName} – снимка ${currentImage + 1}`;
+    mainImage.alt = `${fallback.displayName} – ${tr("снимка")} ${currentImage + 1}`;
     get("#galleryCounter").textContent = `${currentImage + 1} / ${gallery.length}`;
     core.setImageSource(get("#lightboxImage"), gallery[currentImage]);
 
@@ -342,9 +360,18 @@
   loader.style.display = "none";
   page.hidden = false;
 
+  document.addEventListener("fadi:languagechange", () => {
+    renderData(liveData || {}, Boolean(liveData));
+    renderVehicleSequence();
+    renderGallery();
+    renderGalleryMessage();
+    get("#relatedGrid").innerHTML = related.map(core.vehicleCard).join("");
+    core.activateImageFallbacks(get("#relatedGrid"));
+  });
+
   if (location.protocol === "file:") {
-    get("#galleryMessage").textContent =
-      "Пълната галерия и актуалните данни се зареждат след публикуване във Vercel.";
+    galleryMessageState = "local";
+    renderGalleryMessage();
     return;
   }
 
@@ -360,13 +387,12 @@
     }
 
     renderData(liveData, true);
-    get("#galleryMessage").textContent =
-      gallery.length > 1
-        ? `Заредени са ${gallery.length} снимки от актуалната обява.`
-        : "Налична е една снимка за този автомобил.";
+    galleryMessageState = "loaded";
+    renderGalleryMessage();
   } catch (error) {
     console.warn(error);
-    get("#galleryMessage").textContent =
-      "Актуалната галерия временно не може да се зареди. Потвърдете данните и наличността по телефона.";
+    galleryMessageState = "error";
+    renderGalleryMessage();
   }
+
 })();

@@ -35,6 +35,7 @@
       <img class="header-logo-image" src="/assets/images/fadi-cars-logo-dark.png" alt="FADI CARS">
     </a>
 
+    <div class="language-toggle" role="group" aria-label="Език"><button type="button" data-language="bg" aria-pressed="true">BG</button><span aria-hidden="true">|</span><button type="button" data-language="en" aria-pressed="false">EN</button></div>
     <button class="mobile-menu-button" type="button" aria-label="Отвори меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -97,10 +98,10 @@
           <div class="information-main">
             <section class="content-card">
               <div class="content-card-heading"><h2>Технически данни</h2><span class="data-status" id="dataStatus">АКТУАЛНИ ДАННИ</span></div>
-              <div class="specification-grid" id="specificationGrid"></div>
+              <div class="specification-grid" id="specificationGrid" data-i18n-ignore></div>
             </section>
-            <section class="content-card"><h2>Описание</h2><p class="description-text" id="detailDescription"></p></section>
-            <section class="content-card"><h2>Оборудване</h2><div class="equipment-grid" id="equipmentGrid"></div></section>
+            <section class="content-card"><h2>Описание</h2><p class="description-text" id="detailDescription" data-i18n-ignore></p></section>
+            <section class="content-card"><h2>Оборудване</h2><div class="equipment-grid" id="equipmentGrid" data-i18n-ignore></div></section>
           </div>
         </div>
 
@@ -168,6 +169,7 @@
   <nav class="mobile-bottom-nav" aria-label="Мобилна навигация"><a class=" " href="/"><span class="mobile-nav-icon">⌂</span><span>Начало</span></a><a class="active " href="/cars"><span class="mobile-nav-icon">▦</span><span>Коли</span></a><a class="primary" id="vehicleNavLink" href="#vehicleGallery"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img"><path d="M5.2 10 6.8 6.7A2 2 0 0 1 8.6 5.5h6.8a2 2 0 0 1 1.8 1.2l1.6 3.3 1.2.7c.6.4 1 1 1 1.8V17h-2v1.5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V17H8v1.5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V17H3v-4.5c0-.8.4-1.4 1-1.8L5.2 10Zm2.1 0h9.4l-1.1-2.3a.5.5 0 0 0-.5-.3H8.9a.5.5 0 0 0-.5.3L7.3 10ZM6.5 12.3a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Zm11 0a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z" fill="currentColor"/></svg></span><span>Автомобил</span></a><a class=" " href="/leasing"><span class="mobile-nav-icon">€</span><span>Лизинг</span></a><a class=" " href="/contact"><span class="mobile-nav-icon">⌖</span><span>Контакти</span></a></nav>
   <script src="/assets/js/config.js"></script>
   <script src="/assets/js/cars.js"></script>
+  <script src="/assets/js/i18n.js"></script>
   <script src="/assets/js/core.js"></script>
   <script src="/assets/js/car.js"></script>
 </body>
