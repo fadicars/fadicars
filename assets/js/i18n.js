@@ -49,6 +49,68 @@
     ["Каталог", "Catalogue"], ["Филтри и вътрешни страници", "Filters and vehicle pages"], ["FADI CARS карта", "FADI CARS map"]
   ];
   const dictionary = new Map(entries);
+  const vehicleValues = new Map(Object.entries({
+    "дизел": "Diesel", "дизелов": "Diesel", "бензин": "Petrol", "бензинов": "Petrol",
+    "хибрид": "Hybrid", "хибриден": "Hybrid", "електрически": "Electric", "газ/бензин": "LPG/Petrol",
+    "газ / бензин": "LPG/Petrol", "бензин/метан": "Petrol/CNG", "бензинов/метан": "Petrol/CNG",
+    "автоматична": "Automatic", "полуавтоматична": "Semi-automatic", "ръчна": "Manual",
+    "джип": "SUV", "седан": "Sedan", "комби": "Estate", "хечбек": "Hatchback", "купе": "Coupé",
+    "миниван": "MPV", "ван": "Van", "пикап": "Pickup", "товарен": "Commercial van",
+    "товаропътнически": "Crew van", "пътнически": "Passenger van", "микробус": "Minibus",
+    "предно": "Front-wheel drive", "предно предаване": "Front-wheel drive", "задно": "Rear-wheel drive",
+    "задно предаване": "Rear-wheel drive", "4x4": "4x4", "4х4": "4x4", "4wd": "4WD", "awd": "AWD",
+    "черен": "Black", "черен металик": "Black metallic", "бял": "White", "сив": "Grey",
+    "сребърен": "Silver", "син": "Blue", "тъмно син": "Dark blue", "тъмно син мет.": "Dark blue metallic",
+    "светло син": "Light blue", "тъмно сив": "Dark grey", "сив металик": "Grey metallic", "червен": "Red", "зелен": "Green",
+    "кафяв": "Brown", "бежов": "Beige", "жълт": "Yellow", "оранжев": "Orange", "лилав": "Purple",
+    "бордо": "Burgundy", "металик": "Metallic"
+  }));
+  const months = new Map(Object.entries({
+    "януари": "January", "февруари": "February", "март": "March", "април": "April", "май": "May", "юни": "June",
+    "юли": "July", "август": "August", "септември": "September", "октомври": "October", "ноември": "November", "декември": "December"
+  }));
+  const equipment = new Map(Object.entries({
+    "360 camera \\ Задна камера": "360° camera / Reversing camera", "4(5) Врати": "4/5 doors", "Бартер": "Part exchange",
+    "Лизинг": "Financing", "Напълно обслужен": "Fully serviced", "С регистрация": "Registered", "Нов внос": "Fresh import",
+    "Ксенонови фарове": "Xenon headlights", "LED фарове": "LED headlights", "Халогенни фарове": "Halogen headlights",
+    "Адаптивни предни светлини": "Adaptive headlights", "Лети джанти": "Alloy wheels", "Металик": "Metallic paint",
+    "Панорамен люк": "Panoramic sunroof", "Панорамен покрив": "Panoramic roof", "Шибедах": "Sunroof", "Спойлери": "Spoilers",
+    "Камера за заден ход": "Reversing camera", "Задна камера": "Reversing camera",
+    "Аларма": "Alarm", "Централно заключване": "Central locking", "Безключово палене": "Keyless start",
+    "Кожен салон": "Leather interior", "Велурен салон": "Velour interior", "Bluetooth \\ handsfree система": "Bluetooth / hands-free system",
+    "USB, audio\\video, IN\\AUX изводи": "USB, audio/video and AUX inputs", "Бордкомпютър": "On-board computer",
+    "Датчик за светлина": "Light sensor", "Ел. Огледала": "Electric mirrors", "Ел. Стъкла": "Electric windows",
+    "Ел. регулиране на седалките": "Electric seat adjustment", "Ел. усилвател на волана": "Electric power steering",
+    "Серво усилвател на волана": "Power steering", "Климатик": "Air conditioning", "Климатроник": "Automatic climate control",
+    "Мултифункционален волан": "Multifunction steering wheel", "Навигация": "Navigation", "Отопление на волана": "Heated steering wheel",
+    "Подгряване на предното стъкло": "Heated windscreen", "Подгряване на седалките": "Heated seats",
+    "Вентилация на седалките": "Ventilated seats", "Регулиране на волана": "Adjustable steering wheel",
+    "Сензор за дъжд": "Rain sensor", "Система за измиване на фаровете": "Headlight washer system",
+    "Система за контрол на скоростта (автопилот)": "Cruise control", "Система за контрол на дистанцията": "Distance control system",
+    "Система за контрол на спускането": "Hill descent control", "Термопомпа": "Heat pump", "Хладилна жабка": "Cooled glovebox",
+    "Автоматично затваряне на багажника": "Power tailgate", "Адаптивно въздушно окачване": "Adaptive air suspension",
+    "Антиблокираща система": "Anti-lock braking system (ABS)", "Блокаж на диференциала": "Differential lock",
+    "Бързи \\ бавни скорости": "High/low range gearing", "Въздушни възглавници - Задни": "Rear airbags",
+    "Въздушни възглавници - Предни": "Front airbags", "Въздушни възглавници - Странични": "Side airbags",
+    "Ел. разпределяне на спирачното усилие": "Electronic brake-force distribution",
+    "Електронна програма за стабилизиране": "Electronic stability control", "Контрол на налягането на гумите": "Tyre-pressure monitoring",
+    "Парктроник": "Parking sensors", "Печка": "Auxiliary heater", "Сервизна книжка": "Service history",
+    "Система ISOFIX": "ISOFIX child-seat mounts", "Система за динамична устойчивост": "Dynamic stability control",
+    "Система за защита от пробуксуване": "Traction control", "GPS система за проследяване": "GPS tracking system"
+  }));
+  const descriptionPhrases = new Map([
+    ["Автомобилът е в много добро техническо състояние!", "The vehicle is in very good mechanical condition!"],
+    ["Автомобилът е в много добро визуално и техническо състояние!", "The vehicle is in very good cosmetic and mechanical condition!"],
+    ["Автомобилът е в добро визуално и техническо състояние!", "The vehicle is in good cosmetic and mechanical condition!"],
+    ["Бусът е в перфектно визуално и техническо състояние!", "The van is in excellent cosmetic and mechanical condition!"],
+    ["Перфектна работа на мотора!", "The engine runs perfectly!"],
+    ["Перфектна работа на мотор и скорости!", "The engine and transmission operate perfectly!"],
+    ["Предлагаме собствен лизинг на 100% одобрение!", "We offer in-house financing with 100% approval!"],
+    ["Предлагаме съдействие в КАТ!", "We provide assistance with Traffic Police registration!"],
+    ["Разгледайте и останалите ни обяви!", "Browse our other listings too!"],
+    ["Виж всички обяви в fadicars.bazar.bg и fadicars.mobile.bg", "View all listings at fadicars.bazar.bg and fadicars.mobile.bg"],
+    ["Виж всички обяви в", "View all listings at"]
+  ]);
   const originals = new WeakMap();
   const attributeOriginals = new WeakMap();
   const storageKey = "fadi-language";
@@ -58,6 +120,68 @@
 
   function t(value) {
     return language === "en" ? (dictionary.get(value) || value) : value;
+  }
+
+  function translateVehicleValue(value) {
+    const original = String(value ?? "");
+    if (language !== "en" || !original) return original;
+    const trimmed = original.trim();
+    const exact = vehicleValues.get(trimmed.toLocaleLowerCase("bg-BG"));
+    if (exact) return exact;
+    const monthMatch = trimmed.match(/^([А-Яа-я]+)(\s+\d{4})$/);
+    if (monthMatch && months.has(monthMatch[1].toLocaleLowerCase("bg-BG"))) {
+      return `${months.get(monthMatch[1].toLocaleLowerCase("bg-BG"))}${monthMatch[2]}`;
+    }
+    return trimmed
+      .replace(/^Евро\s+/i, "Euro ")
+      .replace(/(\d(?:[\d\s.,]*\d)?)\s*км(?=\s|$)/gi, "$1 km")
+      .replace(/(\d(?:[\d\s.,]*\d)?)\s*к\.с\.?(?=\s|$)/gi, "$1 hp")
+      .replace(/(\d(?:[\d\s.,]*\d)?)\s*см³(?=\s|$)/gi, "$1 cc")
+      .replace(/\s{2,}/g, " ");
+  }
+
+  function translateVehicleTitle(value) {
+    const original = String(value ?? "");
+    if (language !== "en" || !original) return original;
+    return original
+      .replace(/СОБСТВЕН\s+ЛИЗИНГ/gi, "IN-HOUSE FINANCING")
+      .replace(/ЛИЗИНГ\s*(?=100%)/gi, "FINANCING ")
+      .replace(/ЛИЗИНГ/gi, "FINANCING")
+      .replace(/НА\s+100%\s*ОДОБРЕНИЕ/gi, "FINANCING AVAILABLE")
+      .replace(/100%\s*ОДОБРЕНИЕУ?/gi, "FINANCING AVAILABLE")
+      .replace(/СМЕНЕНА\s+ВЕРИГА/gi, "TIMING CHAIN REPLACED")
+      .replace(/ПЪТНА\s+ПОМОЩ/gi, "ROADSIDE ASSISTANCE")
+      .replace(/РЪЧНИ\s+СКОРОСТИ/gi, "MANUAL TRANSMISSION")
+      .replace(/[МM][-\s]*ПАКЕТ/gi, "M SPORT PACKAGE")
+      .replace(/ПРОМОЦИЯ/gi, "PROMOTION")
+      .replace(/ГЕРМАНИЯ/gi, "GERMANY")
+      .replace(/БЕНЗИН\/МЕТАН/gi, "PETROL/CNG")
+      .replace(/ГАЗ\/БЕНЗИН/gi, "LPG/PETROL")
+      .replace(/360\s*КАМЕРА/gi, "360° CAMERA")
+      .replace(/(^|[\s/*!.])ТОП(?=$|[\s/*!.])/gi, "$1TOP")
+      .replace(/(\d+)\s*К\.С\.?/gi, "$1 hp")
+      .replace(/(\d+)\s*КМ(?=$|[\s!*/.])/gi, "$1 km")
+      .replace(/\s*[!*]+\s*/g, " · ")
+      .replace(/\s+/g, " ")
+      .replace(/(?:\s*·\s*){2,}/g, " · ")
+      .replace(/^\s*·\s*|\s*·\s*$/g, "")
+      .trim();
+  }
+
+  function translateEquipment(value) {
+    const original = String(value ?? "");
+    if (language !== "en" || !original) return original;
+    return equipment.get(original.trim()) || translateVehicleValue(original);
+  }
+
+  function translateVehicleDescription(value) {
+    const original = String(value ?? "");
+    if (language !== "en" || !original) return original;
+    let translated = original;
+    descriptionPhrases.forEach((english, bulgarian) => {
+      translated = translated.split(bulgarian).join(english);
+    });
+    return translated;
   }
 
   function apply(root = document) {
@@ -104,5 +228,15 @@
     apply();
   }
 
-  window.FadiI18n = { init, apply, t, setLanguage, getLanguage: () => language };
+  window.FadiI18n = {
+    init,
+    apply,
+    t,
+    translateEquipment,
+    translateVehicleDescription,
+    translateVehicleTitle,
+    translateVehicleValue,
+    setLanguage,
+    getLanguage: () => language
+  };
 })();

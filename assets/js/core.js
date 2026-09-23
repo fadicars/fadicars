@@ -66,12 +66,14 @@
   }
 
   function vehicleCard(car, index = 0) {
-    const title = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
+    const sourceTitle = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
+    const title = window.FadiI18n.translateVehicleTitle(sourceTitle);
     const price = car.priceText || formatPrice(car.price);
     const year = car.year || "";
-    const mileage = car.mileageText || `${formatNumber(car.mileage)} км`;
-    const fuel = car.fuel || "";
-    const gearbox = car.transmission || "";
+    const mileage = window.FadiI18n.translateVehicleValue(car.mileageText || `${formatNumber(car.mileage)} км`);
+    const fuel = window.FadiI18n.translateVehicleValue(car.fuel || "");
+    const gearbox = window.FadiI18n.translateVehicleValue(car.transmission || "");
+    const body = window.FadiI18n.translateVehicleValue(car.body || car.category || "Автомобил");
     const image = car.imageUrl ? normalizedImage(car.imageUrl) : liveImageUrl(car);
     const url = detailUrl(car);
 
@@ -79,7 +81,7 @@
       <article class="vehicle-card" data-i18n-ignore>
         <a class="vehicle-image-link" href="${url}">
           <img loading="${index < 4 ? "eager" : "lazy"}" decoding="async"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
-          <span class="vehicle-badge">${car.body || car.category || "Автомобил"}</span>
+          <span class="vehicle-badge">${body}</span>
         </a>
         <div class="vehicle-content">
           <span class="vehicle-year">${year}</span>

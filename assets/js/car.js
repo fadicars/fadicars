@@ -122,7 +122,8 @@
     const setLink = (direction, car) => {
       if (!car) return;
       const link = get(`#${direction}VehicleLink`);
-      const title = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
+      const sourceTitle = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
+      const title = i18n.translateVehicleTitle(sourceTitle);
       link.href = core.detailUrl(car);
       link.setAttribute("aria-label", `${direction === "previous" ? tr("Предишен автомобил") : tr("Следващ автомобил")}: ${title}`);
       get(`#${direction}VehicleTitle`).textContent = title;
@@ -170,16 +171,17 @@
   }
 
   function renderData(data = {}, live = false) {
-    const title = data.title || fallback.title || fallback.displayName || tr("Автомобил");
+    const sourceTitle = data.title || fallback.title || fallback.displayName || "Автомобил";
+    const title = i18n.translateVehicleTitle(sourceTitle);
     const price = data.price || core.formatPrice(fallback.price);
     const subtitle = [
-      data.productionDate || `${fallback.month || ""} ${fallback.year || ""}`.trim(),
-      data.fuel || fallback.fuel,
-      data.category || fallback.body
+      i18n.translateVehicleValue(data.productionDate || `${fallback.month || ""} ${fallback.year || ""}`.trim()),
+      i18n.translateVehicleValue(data.fuel || fallback.fuel),
+      i18n.translateVehicleValue(data.category || fallback.body)
     ].filter(Boolean).join(" • ");
 
-    const pageTitle = `${title} | FADI CARS`;
-    const description = vehicleMetaDescription(title, data);
+    const pageTitle = `${sourceTitle} | FADI CARS`;
+    const description = vehicleMetaDescription(sourceTitle, data);
     const image = absoluteImageUrl(data.images?.[0] || fallback.imageUrl || fallback.image);
     document.title = pageTitle;
     const canonicalUrl = core.canonicalVehicleUrl(resolvedId);
@@ -207,17 +209,17 @@
     get("#sidebarVat").textContent = data.vat || "";
 
     get("#specificationGrid").innerHTML =
-      specification(tr("Дата на производство"), data.productionDate || `${fallback.month || ""} ${fallback.year}`) +
-      specification(tr("Двигател"), data.fuel || fallback.fuel) +
-      specification(tr("Мощност"), data.power || `${fallback.power} к.с.`) +
-      specification(tr("Кубатура"), data.engine || `${core.formatNumber(fallback.engine)} см³`) +
-      specification(tr("Скоростна кутия"), data.transmission || fallback.transmission) +
-      specification(tr("Пробег"), data.mileage || `${core.formatNumber(fallback.mileage)} км`) +
-      specification(tr("Категория"), data.category || fallback.body) +
-      specification(tr("Цвят"), data.color || fallback.color) +
-      specification(tr("Евростандарт"), data.euro || fallback.euro);
+      specification(tr("Дата на производство"), i18n.translateVehicleValue(data.productionDate || `${fallback.month || ""} ${fallback.year}`)) +
+      specification(tr("Двигател"), i18n.translateVehicleValue(data.fuel || fallback.fuel)) +
+      specification(tr("Мощност"), i18n.translateVehicleValue(data.power || `${fallback.power} к.с.`)) +
+      specification(tr("Кубатура"), i18n.translateVehicleValue(data.engine || `${core.formatNumber(fallback.engine)} см³`)) +
+      specification(tr("Скоростна кутия"), i18n.translateVehicleValue(data.transmission || fallback.transmission)) +
+      specification(tr("Пробег"), i18n.translateVehicleValue(data.mileage || `${core.formatNumber(fallback.mileage)} км`)) +
+      specification(tr("Категория"), i18n.translateVehicleValue(data.category || fallback.body)) +
+      specification(tr("Цвят"), i18n.translateVehicleValue(data.color || fallback.color)) +
+      specification(tr("Евростандарт"), i18n.translateVehicleValue(data.euro || fallback.euro));
 
-    get("#detailDescription").textContent = data.description ||
+    get("#detailDescription").textContent = i18n.translateVehicleDescription(data.description) ||
       tr("За актуална информация относно състоянието, обслужването и условията за покупка се свържете директно с FADI CARS.");
 
     const features = Array.isArray(data.features) && data.features.length
@@ -229,7 +231,7 @@
     features.forEach(feature => {
       const item = document.createElement("div");
       item.className = "equipment-item";
-      item.textContent = feature;
+      item.textContent = i18n.translateEquipment(feature);
       equipmentGrid.appendChild(item);
     });
 
@@ -271,7 +273,7 @@
     currentImage = (index + gallery.length) % gallery.length;
     const mainImage = get("#mainGalleryImage");
     core.setImageSource(mainImage, gallery[currentImage]);
-    mainImage.alt = `${fallback.displayName} – ${tr("снимка")} ${currentImage + 1}`;
+    mainImage.alt = `${i18n.translateVehicleTitle(fallback.displayName)} – ${tr("снимка")} ${currentImage + 1}`;
     get("#galleryCounter").textContent = `${currentImage + 1} / ${gallery.length}`;
     core.setImageSource(get("#lightboxImage"), gallery[currentImage]);
 

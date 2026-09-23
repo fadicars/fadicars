@@ -34,19 +34,27 @@
   function values(field) {
     return [...new Set(cars.map(car => car[field]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"bg"));
   }
-  function fill(select, vals) {
-    vals.forEach(value => select.insertAdjacentHTML("beforeend", `<option value="${value}">${value}</option>`));
+  function fill(select, vals, translate = false) {
+    vals.forEach(value => select.insertAdjacentHTML("beforeend", `<option value="${value}">${translate ? i18n.translateVehicleValue(value) : value}</option>`));
   }
 
   fill(e.brand, values("brand"));
-  fill(e.fuel, values("fuel"));
-  fill(e.gear, values("transmission"));
-  fill(e.body, [...new Set(cars.map(c => c.body || c.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"bg")));
+  fill(e.fuel, values("fuel"), true);
+  fill(e.gear, values("transmission"), true);
+  fill(e.body, [...new Set(cars.map(c => c.body || c.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"bg")), true);
 
   // Mirror desktop options.
   e.desktopBrand.innerHTML = e.brand.innerHTML;
   e.desktopFuel.innerHTML = e.fuel.innerHTML;
   e.desktopGear.innerHTML = e.gear.innerHTML;
+
+  function refreshVehicleOptionLabels() {
+    [e.fuel, e.gear, e.body, e.desktopFuel, e.desktopGear].forEach(select => {
+      [...select.options].forEach(option => {
+        if (option.value) option.textContent = i18n.translateVehicleValue(option.value);
+      });
+    });
+  }
 
   const params = new URLSearchParams(location.search);
   e.search.value = params.get("q") || "";
@@ -194,6 +202,7 @@
   render();
 
   document.addEventListener("fadi:languagechange", () => {
+    refreshVehicleOptionLabels();
     const allBrands = e.brandShortcuts.querySelector('[data-brand=""]');
     if (allBrands) allBrands.textContent = i18n.t("Всички");
     render();
