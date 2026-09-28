@@ -2,6 +2,11 @@ const cheerio = require("cheerio");
 
 const ALLOWED = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/;
 
+function extractListingId(url) {
+  const match = String(url || "").match(/\/obiava-(\d+)(?:-|$)/);
+  return match ? match[1] : "";
+}
+
 async function decodeHtml(response) {
   return new TextDecoder("windows-1251").decode(await response.arrayBuffer());
 }
@@ -178,11 +183,16 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    const listingId = extractListingId(url);
     const listing = await fetchListing(url);
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
     res.setHeader("CDN-Cache-Control", "no-store");
     res.setHeader("Vercel-CDN-Cache-Control", "no-store");
-    return res.status(200).json(listing);
+    return res.status(200).json({
+      ...listing,
+      listingId,
+      canonicalUrl: listingId ? `https://www.fadicars.com/car/${listingId}` : ""
+    });
   } catch (error) {
     return res.status(502).json({
       error: "Could not load listing",
