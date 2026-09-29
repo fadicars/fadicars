@@ -135,12 +135,37 @@ async function loadCatalogue() {
   return catalogueRefresh;
 }
 
+function escapeCsvValue(value) {
+  const text = value === null || value === undefined ? "" : String(value);
+  return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function catalogueToCsv(cars) {
+  const rows = cars.map(car => [
+    car.id,
+    car.title,
+    car.price,
+    car.year,
+    car.mileage,
+    car.fuel,
+    car.transmission,
+    car.listingUrl,
+    `https://www.fadicars.com/car/${car.id}`
+  ].map(escapeCsvValue).join(","));
+
+  return rows.length ? `${rows.join("\r\n")}\r\n` : "";
+}
+
 module.exports = async function handler(req, res) {
   try {
     const currentCars = await loadCatalogue();
 
     res.setHeader("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=60");
     res.setHeader("Vercel-CDN-Cache-Control", "max-age=300, stale-while-revalidate=60");
+    if (req.query?.format === "csv") {
+      res.setHeader("Content-Type", "text/csv; charset=utf-8");
+      return res.status(200).send(catalogueToCsv(currentCars));
+    }
     return res.status(200).json({ cars: currentCars });
   } catch (error) {
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
@@ -154,3 +179,4 @@ module.exports = async function handler(req, res) {
 
 module.exports.extractCars = extractCars;
 module.exports.loadCatalogue = loadCatalogue;
+module.exports.catalogueToCsv = catalogueToCsv;
