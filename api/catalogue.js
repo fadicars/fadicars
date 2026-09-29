@@ -150,7 +150,8 @@ function catalogueToCsv(cars) {
     car.fuel,
     car.transmission,
     car.listingUrl,
-    `https://www.fadicars.com/car/${car.id}`
+    `https://www.fadicars.com/car/${car.id}`,
+    car.imageUrl
   ].map(escapeCsvValue).join(","));
 
   return rows.length ? `${rows.join("\r\n")}\r\n` : "";
