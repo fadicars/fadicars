@@ -65,7 +65,7 @@
         <h1>Поръчайте автомобил от Корея</h1>
         <p class="korea-hero-copy">Избирате автомобил. Ние организираме проверката, покупката, транспорта и доставката до България.</p>
         <div class="korea-hero-actions">
-          <a class="button button-red" href="#korea-cars">Разгледай автомобили</a>
+          <a class="button button-red" href="/korea-cars">Разгледай автомобили</a>
           <a class="button korea-button-ghost" href="#korea-enquiry">Изпрати запитване</a>
         </div>
       </div>
@@ -84,10 +84,10 @@
       <div class="container">
         <div>
           <p class="eyebrow">АВТОМОБИЛИ</p>
-          <h2 id="korea-cars-title">Предложенията се подготвят</h2>
-          <p>Дотогава ни кажете какъв автомобил търсите и ще започнем от Вашите изисквания.</p>
+          <h2 id="korea-cars-title">Автомобили от Корея</h2>
+          <p>Избрани автомобили, които могат да бъдат поръчани и доставени до България.</p>
         </div>
-        <a class="button button-outline" href="#korea-enquiry">Кажете ни какво търсите</a>
+        <a class="button button-outline" href="/korea-cars">Разгледай автомобили</a>
       </div>
     </section>
 
@@ -176,6 +176,7 @@
           <p>Оставете основната информация и ще се свържем с Вас, за да уточним автомобила и следващите стъпки.</p>
         </div>
         <form class="korea-enquiry-form" id="koreaEnquiryForm">
+          <div id="koreaSelectedVehicle" class="korea-selected-vehicle" role="status" aria-live="polite" data-i18n-ignore hidden></div>
           <div class="korea-form-grid">
             <label><span>Име</span><input type="text" name="name" autocomplete="name" required></label>
             <label><span>Телефон</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
@@ -228,6 +229,7 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/core.js"></script>
+  <script src="assets/js/korea-data.js"></script>
   <script src="assets/js/korea.js"></script>
 </body>
 </html>
