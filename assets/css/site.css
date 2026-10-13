@@ -112,10 +112,16 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 /* Separate Korea order inventory: no overrides to the Mobile.bg vehicle cards. */
 .korea-catalogue-section,.korea-detail-section{padding:22px 0 60px}
 .korea-back-link{display:inline-block;margin-bottom:18px;color:var(--red);font-size:12px;font-weight:800}
-.korea-catalogue-filters{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-bottom:22px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
-.korea-catalogue-filters label{display:grid;min-width:0;gap:6px;font-size:11px;font-weight:700}
-.korea-catalogue-filters input,.korea-catalogue-filters select{width:100%;min-width:0;height:45px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
-.korea-catalogue-filters .button{align-self:end;min-height:45px}
+.korea-mobile-catalogue-bar{margin-bottom:6px}
+.korea-desktop-filter-panel label{min-width:0}
+.korea-desktop-filter-panel input,.korea-desktop-filter-panel select{min-width:0;border-radius:8px;font-size:11px}
+.korea-catalogue-toolbar{padding-top:16px}
+.korea-catalogue-toolbar select{width:155px}
+.korea-filter-drawer[hidden],.korea-filter-backdrop[hidden]{display:none}
+.korea-filter-drawer{max-height:calc(100dvh - var(--mobile-nav-height) - env(safe-area-inset-bottom) - 32px);padding-bottom:18px}
+.korea-filter-drawer.open{bottom:calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 14px)}
+.korea-filter-drawer select{min-width:0;border-radius:8px;font-size:12px}
+.korea-filter-drawer .filter-drawer-actions{padding-bottom:4px}
 .korea-car-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
 .korea-car-card{min-width:0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 .korea-card-image-link{display:block}
@@ -136,7 +142,14 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-state-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
 .korea-detail-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
 .korea-detail-gallery,.korea-detail-summary{min-width:0}
-.korea-detail-main-image{overflow:hidden;border-radius:var(--radius)}
+.korea-detail-main-image{position:relative;overflow:hidden;border-radius:var(--radius)}
+.korea-detail-image-stage{touch-action:pan-y;user-select:none;cursor:grab}
+.korea-detail-image-stage:active{cursor:grabbing}
+.korea-detail-image-stage img{-webkit-user-drag:none}
+.korea-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:44px;padding:0;border:0;color:#fff;background:rgba(0,0,0,.58);font-size:29px;line-height:1;cursor:pointer}
+.korea-gallery-prev{left:0}
+.korea-gallery-next{right:0}
+.korea-gallery-counter{position:absolute;right:10px;bottom:10px;padding:5px 9px;color:#fff;background:rgba(0,0,0,.72);border-radius:4px;font-size:11px;pointer-events:none}
 .korea-detail-main-image .korea-image-frame img{object-fit:contain}
 .korea-detail-thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(65px,1fr));gap:8px;margin-top:10px}
 .korea-detail-thumbnail{min-width:0;padding:0;overflow:hidden;border:2px solid transparent;border-radius:8px;cursor:pointer;background:#e9e9ed}
@@ -158,5 +171,5 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-selected-vehicle strong{font-size:18px}
 .korea-catalogue-page .button,.korea-detail-page .button{max-width:100%;white-space:normal;text-align:center;overflow-wrap:anywhere}
 .korea-catalogue-page :focus-visible,.korea-detail-page :focus-visible{outline:2px solid var(--red);outline-offset:3px}
-@media(min-width:640px){.korea-catalogue-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-detail-features{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(min-width:900px){.korea-catalogue-filters{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) repeat(2,minmax(0,1fr)) auto}.korea-car-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.korea-detail-layout{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}.korea-detail-section,.korea-catalogue-section{padding-bottom:75px}}
+@media(min-width:640px){.korea-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-detail-features{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-gallery-arrow{width:40px;height:54px}}
+@media(min-width:900px){.korea-desktop-filter-panel{grid-template-columns:minmax(0,1.5fr) repeat(5,minmax(0,1fr)) auto}.korea-catalogue-toolbar select{width:185px}.korea-car-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.korea-detail-layout{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}.korea-detail-section,.korea-catalogue-section{padding-bottom:75px}}

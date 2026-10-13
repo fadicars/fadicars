@@ -101,6 +101,8 @@
     ["Готови сте да потърсим автомобил?", "Ready for us to find a vehicle?"], ["Свържете се с нас и кажете какво търсите.", "Contact us and tell us what you are looking for."]
   ];
   entries.push(
+    ["Най-нова година", "Newest year"], ["Затвори филтрите", "Close filters"],
+    ["Предишна снимка", "Previous photo"], ["Следваща снимка", "Next photo"], ["Галерия на автомобила", "Vehicle gallery"],
     ["Година", "Year"], ["Задвижване", "Drivetrain"],
     ["Поръчка от Корея","Order from Korea"],
     ["Избрани автомобили, които могат да бъдат поръчани и доставени до България.","Selected vehicles available to order and deliver to Bulgaria."],

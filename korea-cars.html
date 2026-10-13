@@ -52,18 +52,42 @@
     <section class="korea-catalogue-section">
       <div class="container">
         <a class="korea-back-link" href="/korea">Поръчай автомобил</a>
-        <form id="koreaFilters" class="korea-catalogue-filters" aria-label="Филтри">
-          <label><span>Марка</span><select name="make"><option value="">Всички марки</option></select></label>
-          <label><span>Модел / търсене</span><input name="search" type="search" placeholder="Търси марка или модел"></label>
-          <label><span>Година от</span><input name="year" type="number" min="1980" max="2099" inputmode="numeric"></label>
-          <label><span>Максимална цена (€)</span><input name="price" type="number" min="0" inputmode="numeric"></label>
-          <button type="reset" class="button button-outline">Изчисти филтрите</button>
+        <div class="mobile-catalogue-bar korea-mobile-catalogue-bar">
+          <label class="mobile-search"><span aria-hidden="true">⌕</span><input id="koreaSearch" data-korea-filter="search" type="search" placeholder="Марка или модел" aria-label="Търсене"></label>
+          <button id="koreaOpenFilters" type="button" aria-controls="koreaFilterDrawer" aria-expanded="false"><span>Филтри</span><b id="koreaActiveFilterCount">0</b></button>
+        </div>
+        <form id="koreaDesktopFilters" class="desktop-filter-panel korea-desktop-filter-panel" aria-label="Филтри">
+          <label><span>Търсене</span><input data-korea-filter="search" type="search" placeholder="Марка или модел"></label>
+          <label><span>Марка</span><select data-korea-filter="make"><option value="">Всички марки</option></select></label>
+          <label><span>Гориво</span><select data-korea-filter="fuel"><option value="">Всички горива</option></select></label>
+          <label><span>Скорости</span><select data-korea-filter="transmission"><option value="">Всички</option></select></label>
+          <label><span>Година от</span><select data-korea-filter="year"><option value="">Без ограничение</option></select></label>
+          <label><span>Максимална цена</span><select data-korea-filter="price"><option value="">Без ограничение</option></select></label>
+          <button type="button" data-korea-clear>Изчисти</button>
         </form>
+        <div class="catalogue-toolbar korea-catalogue-toolbar">
+          <div aria-live="polite"><strong id="koreaResultCount">0</strong><span> резултата</span></div>
+          <label><span>Подреди</span><select id="koreaSort" aria-label="Подреди"><option value="year-desc">Най-нова година</option><option value="price-asc">Цена ↑</option><option value="price-desc">Цена ↓</option><option value="mileage-asc">Пробег ↑</option></select></label>
+        </div>
         <div id="koreaCatalogue" aria-live="polite" data-i18n-ignore><p>Зареждане на автомобили...</p></div>
         <noscript><p>За разглеждане на автомобилите включете JavaScript или се свържете с нас.</p><a class="button button-red" href="/korea#korea-enquiry">Изпрати запитване</a></noscript>
       </div>
     </section>
   </main>
+  <div class="filter-drawer-backdrop korea-filter-backdrop" id="koreaFilterBackdrop" hidden></div>
+  <aside class="filter-drawer korea-filter-drawer" id="koreaFilterDrawer" role="dialog" aria-modal="true" aria-labelledby="koreaFilterTitle" aria-hidden="true" hidden inert>
+    <div class="filter-drawer-head"><h2 id="koreaFilterTitle">Филтри</h2><button id="koreaCloseFilters" type="button" aria-label="Затвори филтрите">×</button></div>
+    <form id="koreaMobileFilters">
+      <div class="filter-fields">
+        <label><span>Марка</span><select data-korea-filter="make"><option value="">Всички марки</option></select></label>
+        <label><span>Гориво</span><select data-korea-filter="fuel"><option value="">Всички горива</option></select></label>
+        <label><span>Скорости</span><select data-korea-filter="transmission"><option value="">Всички</option></select></label>
+        <label><span>Година от</span><select data-korea-filter="year"><option value="">Без ограничение</option></select></label>
+        <label><span>Максимална цена</span><select data-korea-filter="price"><option value="">Без ограничение</option></select></label>
+      </div>
+      <div class="filter-drawer-actions"><button class="button button-outline" type="button" data-korea-clear>Изчисти</button><button class="button button-red" id="koreaApplyFilters" type="submit">Покажи резултатите</button></div>
+    </form>
+  </aside>
   <footer class="site-footer">
     <div class="container footer-main">
       <div><a class="logo logo-footer" href="/"><img class="footer-logo-image" src="assets/images/fadi-cars-logo-dark.png" alt="FADI CARS"></a><p>Автомобили в наличност, директен контакт и съдействие при покупка.</p></div>
