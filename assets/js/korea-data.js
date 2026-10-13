@@ -53,8 +53,9 @@
       img.alt = title;
       img.loading = eager ? "eager" : "lazy";
       img.decoding = "async";
-      img.hidden = true;
-      img.addEventListener("load", () => { img.hidden = false; placeholder.hidden = true; });
+      // Keep lazy images in layout so the browser can request them before load.
+      img.classList.add("korea-image-loading");
+      img.addEventListener("load", () => { img.classList.remove("korea-image-loading"); placeholder.hidden = true; });
       img.addEventListener("error", () => { img.remove(); placeholder.hidden = false; });
       img.src = url;
       frame.append(img);

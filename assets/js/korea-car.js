@@ -53,8 +53,8 @@
     summary.append(K.node("h1", "", K.title(car)), K.node("strong", "korea-detail-price", K.price(car)));
     const specs = K.node("dl", "korea-detail-specs");
     const fields = [["Година", K.year(car.year)], ["Пробег", K.mileage(car)], ["Гориво", K.localized(car, "fuel")],
-      ["Двигател", K.localized(car, "engine")], ["Мощност", K.localized(car, "power")], ["Скоростна кутия", K.localized(car, "transmission")],
-      ["Задвижване", K.localized(car, "drivetrain")], ["Цвят", K.localized(car, "color")], ["Местоположение", K.localized(car, "location") || K.t("Южна Корея")]];
+      ["Двигател", K.localized(car, "engine")], ["Скоростна кутия", K.localized(car, "transmission")],
+      ["Цвят", K.localized(car, "color")], ["Местоположение", K.localized(car, "location") || K.t("Южна Корея")]];
     fields.forEach(([label, value]) => {
       const item = K.node("div");
       item.append(K.node("dt", "", K.t(label)), K.node("dd", "", value || "—"));
