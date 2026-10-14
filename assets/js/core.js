@@ -72,7 +72,7 @@
   function vehicleStatusBadge(value) {
     const status = normalizedStatus(value);
     if (status === "available") return "";
-    return `<span class="mobile-vehicle-status mobile-vehicle-status-${status}">${window.FadiI18n.t(status === "sold" ? "Продадено" : "Капарирано")}</span>`;
+    return `<span class="mobile-vehicle-status mobile-vehicle-status-${status}">${window.FadiI18n.t(status === "sold" ? "Продадено" : "Капарирано / Продадено")}</span>`;
   }
 
   function vehicleCard(car, index = 0) {
