@@ -1,4 +1,5 @@
 const cheerio = require("cheerio");
+const { extractStatus } = require("./mobile-status");
 
 const ALLOWED = /^https:\/\/fadicars\.mobile\.bg\/obiava-[a-zA-Z0-9-]+$/;
 
@@ -147,6 +148,7 @@ function parseListingHtml(html) {
 
   return {
     title,
+    status: extractStatus($, $(".ad2023 > .left .rezon-carousel-theme-wrapper")),
     price: lines.find(line => /^\d[\d\s]*\s*€$/.test(line)) || "",
     vat: lines.find(line => /ДДС/.test(line)) || "",
     productionDate: nextValue(lines, "Дата на производство"),

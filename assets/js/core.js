@@ -65,6 +65,16 @@
     return `/api/image?url=${encodeURIComponent(car.listingUrl)}`;
   }
 
+  function normalizedStatus(value) {
+    return value === "reserved" || value === "sold" ? value : "available";
+  }
+
+  function vehicleStatusBadge(value) {
+    const status = normalizedStatus(value);
+    if (status === "available") return "";
+    return `<span class="mobile-vehicle-status mobile-vehicle-status-${status}">${window.FadiI18n.t(status === "sold" ? "Продадено" : "Капарирано")}</span>`;
+  }
+
   function vehicleCard(car, index = 0) {
     const sourceTitle = car.title || car.displayName || `${car.brand || ""} ${car.model || ""}`.trim();
     const title = window.FadiI18n.translateVehicleTitle(sourceTitle);
@@ -82,6 +92,7 @@
         <a class="vehicle-image-link" href="${url}">
           <img loading="${index < 4 ? "eager" : "lazy"}" decoding="async"${index < 4 ? ' fetchpriority="high"' : ""} src="${image}" data-fallback="${placeholder}" alt="${title}">
           <span class="vehicle-badge">${body}</span>
+          ${vehicleStatusBadge(car.status)}
         </a>
         <div class="vehicle-content">
           <span class="vehicle-year">${year}</span>
@@ -166,6 +177,8 @@
     detailUrl,
     liveImageUrl,
     vehicleCard,
+    normalizedStatus,
+    vehicleStatusBadge,
     activateImageFallbacks,
     setImageSource,
     getCatalogue

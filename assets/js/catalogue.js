@@ -121,7 +121,7 @@
     });
 
     const sorters = {
-      newest: (a,b) => (b.year || 0) - (a.year || 0) || (b.price || 0) - (a.price || 0),
+      newest: (a,b) => ({available:0,reserved:1,sold:2}[core.normalizedStatus(a.status)] - {available:0,reserved:1,sold:2}[core.normalizedStatus(b.status)]) || (b.year || 0) - (a.year || 0) || (b.price || 0) - (a.price || 0),
       "price-asc": (a,b) => Number(a.price || 0) - Number(b.price || 0),
       "price-desc": (a,b) => Number(b.price || 0) - Number(a.price || 0),
       "mileage-asc": (a,b) => Number(a.mileage || 0) - Number(b.mileage || 0)

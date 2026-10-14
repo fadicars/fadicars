@@ -200,6 +200,7 @@
     });
     get("#breadcrumbTitle").textContent = title;
     get("#detailTitle").textContent = title;
+    get("#detailVehicleStatus").innerHTML = core.vehicleStatusBadge(data.status ?? fallback.status);
     get("#detailSubtitle").textContent = subtitle;
     get("#detailPrice").textContent = price;
     get("#sidebarPrice").textContent = price;

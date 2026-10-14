@@ -1,5 +1,6 @@
 (() => {
   const entries = [
+    ["Капарирано", "Reserved"], ["Продадено", "Sold"],
     ["Начало", "Home"], ["Автомобили", "Vehicles"], ["Коли", "Cars"], ["Лизинг", "Leasing"], ["Контакти", "Contact"], ["Продажби", "Sales"],
     ["Отвори меню", "Open menu"], ["Мобилна навигация", "Mobile navigation"], ["Навигация", "Navigation"], ["Език", "Language"],
     ["Автомобили в наличност, директен контакт и съдействие при покупка.", "Vehicles in stock, direct contact and purchase assistance."],

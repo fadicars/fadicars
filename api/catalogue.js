@@ -1,4 +1,5 @@
 const cheerio = require("cheerio");
+const { extractStatus } = require("./mobile-status");
 
 const CATEGORIES = [
   "avtomobili-dzhipove",
@@ -91,6 +92,7 @@ function extractCars(html) {
 
     found.set(href, {
       id,
+      status: extractStatus($, container),
       title,
       listingUrl: href,
       price: parseNumber(priceText),
