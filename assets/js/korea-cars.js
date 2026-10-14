@@ -98,25 +98,6 @@
     document.querySelector('meta[property="og:description"]').content = document.querySelector('meta[name="description"]').content;
   }
 
-  function card(car, index) {
-    const article = K.node("article", "korea-car-card");
-    const photo = K.link("", K.detailUrl(car), "korea-card-image-link");
-    photo.setAttribute("aria-label", `${K.t("Виж автомобила")}: ${K.title(car)}`);
-    photo.append(K.image(car.image || car.images?.[0], K.title(car), index < 2));
-    article.append(photo);
-    const body = K.node("div", "korea-card-content");
-    body.append(K.node("span", "korea-order-label", K.t("Поръчка от Корея")));
-    if (car.status === "reserved") body.append(K.node("span", "korea-reserved-label", K.t("Резервиран")));
-    const heading = K.node("h2");
-    heading.append(K.link(K.title(car), K.detailUrl(car), ""));
-    body.append(heading);
-    const meta = K.node("div", "korea-card-meta");
-    [K.year(car.year), K.mileage(car), K.localized(car, "fuel"), K.localized(car, "transmission")]
-      .filter(Boolean).forEach(value => meta.append(K.node("span", "", value)));
-    body.append(meta, K.node("strong", "korea-card-price", K.price(car)), K.link("Виж автомобила", K.detailUrl(car)));
-    article.append(body);
-    return article;
-  }
   function render() {
     metadata();
     syncControls();
@@ -145,7 +126,7 @@
     count.textContent = String(matches.length);
     if (!matches.length) return K.state(root, "Няма автомобили по тези критерии", "Променете филтрите или изпратете запитване.");
     const grid = K.node("div", "korea-car-grid");
-    matches.forEach((car, index) => grid.append(card(car, index)));
+    matches.forEach((car, index) => grid.append(K.card(car, index)));
     root.replaceChildren(grid);
   }
   controls.forEach(control => control.addEventListener("input", () => {

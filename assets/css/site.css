@@ -45,7 +45,7 @@ body[data-page="korea"] .korea-hero-actions .button{min-height:50px}
 body[data-page="korea"] .korea-button-ghost{color:#fff;background:transparent;border:1px solid #55555d}
 body[data-page="korea"] .korea-assurance{color:#fff;background:#1b1b20;border-top:1px solid #303037}
 body[data-page="korea"] .korea-assurance .container{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
-body[data-page="korea"] .korea-assurance span{position:relative;padding:15px 9px 15px 22px;color:#c8c8ce;font-size:9px;font-weight:700}
+body[data-page="korea"] .korea-assurance span{position:relative;padding:15px 9px 15px 22px;color:#c8c8ce;font-size:12px;font-weight:700}
 body[data-page="korea"] .korea-assurance span:before{content:"✓";position:absolute;left:2px;color:#ff747a;font-weight:800}
 body[data-page="korea"] .korea-cars-placeholder{scroll-margin-top:78px;padding:30px 0;background:#fff;border-bottom:1px solid var(--line)}
 body[data-page="korea"] .korea-cars-placeholder .container{display:grid;gap:18px}
@@ -57,9 +57,9 @@ body[data-page="korea"] .korea-process-grid{display:grid;gap:12px}
 body[data-page="korea"] .korea-step{position:relative;min-width:0;padding:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 body[data-page="korea"] .korea-step-number{display:block;margin-bottom:25px;color:var(--red);font-size:12px;font-weight:800;letter-spacing:.12em}
 body[data-page="korea"] .korea-step h3{margin:0 0 9px;font-size:19px;line-height:1.25}
-body[data-page="korea"] .korea-step p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+body[data-page="korea"] .korea-step p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
 body[data-page="korea"] .korea-step-highlight{display:block;margin-top:18px;color:var(--red);font-size:17px}
-body[data-page="korea"] .korea-step small{display:block;margin-top:5px;color:var(--muted);font-size:9px}
+body[data-page="korea"] .korea-step small{display:block;margin-top:5px;color:var(--muted);font-size:12px}
 body[data-page="korea"] .korea-step-reassurance{color:#fff;background:var(--ink);border-color:var(--ink)}
 body[data-page="korea"] .korea-step-reassurance>strong{display:block;margin:4px 0 10px;color:#fff;font-size:17px;line-height:1.35}
 body[data-page="korea"] .korea-step-reassurance p{color:#b5b5bc}
@@ -74,7 +74,7 @@ body[data-page="korea"] .korea-payment-flow{display:grid;gap:11px}
 body[data-page="korea"] .korea-payment-flow article{padding:24px;background:#202026;border:1px solid #35353c;border-radius:12px}
 body[data-page="korea"] .korea-payment-flow strong{display:block;color:#ff747a;font-size:36px;line-height:1}
 body[data-page="korea"] .korea-payment-flow h3{margin:10px 0 0;font-size:16px}
-body[data-page="korea"] .korea-payment-flow p{margin:5px 0 0;color:#a9a9b0;font-size:10px}
+body[data-page="korea"] .korea-payment-flow p{margin:5px 0 0;color:#a9a9b0;font-size:13px}
 body[data-page="korea"] .korea-payment-arrow{display:grid;place-items:center;height:22px;color:#ff747a;font-size:22px;transform:rotate(90deg)}
 body[data-page="korea"] .korea-enquiry-section{scroll-margin-top:78px}
 body[data-page="korea"] .korea-enquiry-layout{display:grid;gap:26px}
@@ -83,11 +83,11 @@ body[data-page="korea"] .korea-enquiry-layout>div>p:last-child{max-width:570px;m
 body[data-page="korea"] .korea-enquiry-form{padding:20px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 body[data-page="korea"] .korea-form-grid{display:grid;gap:13px}
 body[data-page="korea"] .korea-enquiry-form label{display:grid;gap:6px}
-body[data-page="korea"] .korea-enquiry-form label span{color:#55555d;font-size:10px;font-weight:800}
+body[data-page="korea"] .korea-enquiry-form label span{color:#55555d;font-size:12px;font-weight:800}
 body[data-page="korea"] .korea-enquiry-form input{width:100%;height:48px;padding:0 12px;border:1px solid #cfcfd4;background:#fff;border-radius:8px;outline:0}
 body[data-page="korea"] .korea-enquiry-form input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(215,25,32,.12)}
 body[data-page="korea"] .korea-enquiry-form .button{width:100%;min-height:50px;margin-top:17px}
-body[data-page="korea"] .korea-form-note,body[data-page="korea"] .korea-form-status{margin:9px 0 0;color:var(--muted);font-size:9px}
+body[data-page="korea"] .korea-form-note,body[data-page="korea"] .korea-form-status{margin:9px 0 0;color:var(--muted);font-size:12px}
 body[data-page="korea"] .korea-form-status{min-height:14px;color:var(--ink);font-weight:700}
 body[data-page="korea"] .korea-faq{padding-top:20px;background:#fff}
 body[data-page="korea"] .korea-faq-list{border-top:1px solid var(--line)}
@@ -97,11 +97,11 @@ body[data-page="korea"] .korea-faq summary::-webkit-details-marker{display:none}
 body[data-page="korea"] .korea-faq summary:after{content:"+";position:absolute;right:5px;top:15px;color:var(--red);font-size:23px;line-height:1}
 body[data-page="korea"] .korea-faq details[open] summary:after{content:"−"}
 body[data-page="korea"] .korea-faq summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-body[data-page="korea"] .korea-faq details p{margin:-3px 0 20px;color:var(--muted);font-size:11px;line-height:1.7}
+body[data-page="korea"] .korea-faq details p{margin:-3px 0 20px;color:var(--muted);font-size:13px;line-height:1.7}
 body[data-page="korea"] .korea-final-cta{padding:36px 0;color:#fff;background:var(--red)}
 body[data-page="korea"] .korea-final-cta .container{display:grid;gap:20px}
 body[data-page="korea"] .korea-final-cta h2{margin:0;font-size:29px;line-height:1.12;letter-spacing:-.03em}
-body[data-page="korea"] .korea-final-cta p{margin:8px 0 0;color:rgba(255,255,255,.78);font-size:12px}
+body[data-page="korea"] .korea-final-cta p{margin:8px 0 0;color:rgba(255,255,255,.78);font-size:13px}
 body[data-page="korea"] .korea-final-actions{display:grid;gap:9px}
 body[data-page="korea"] .korea-final-actions .button-red{border:1px solid rgba(255,255,255,.5)}
 @media(min-width:640px){body[data-page="korea"] .korea-hero-actions{display:flex}body[data-page="korea"] .korea-assurance .container{grid-template-columns:repeat(4,minmax(0,1fr))}body[data-page="korea"] .korea-cars-placeholder .container{grid-template-columns:1fr auto;align-items:center}body[data-page="korea"] .korea-process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="korea"] .korea-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="korea"] .korea-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="korea"] .korea-final-cta .container{grid-template-columns:1fr auto;align-items:center}body[data-page="korea"] .korea-final-actions{grid-template-columns:repeat(2,auto)}}
@@ -114,13 +114,13 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-back-link{display:inline-block;margin-bottom:18px;color:var(--red);font-size:12px;font-weight:800}
 .korea-mobile-catalogue-bar{margin-bottom:6px}
 .korea-desktop-filter-panel label{min-width:0}
-.korea-desktop-filter-panel input,.korea-desktop-filter-panel select{min-width:0;border-radius:8px;font-size:11px}
+.korea-desktop-filter-panel input,.korea-desktop-filter-panel select{min-width:0;border-radius:8px;font-size:13px}
 .korea-catalogue-toolbar{padding-top:16px}
 .korea-catalogue-toolbar select{width:155px}
 .korea-filter-drawer[hidden],.korea-filter-backdrop[hidden]{display:none}
 .korea-filter-drawer{max-height:calc(100dvh - var(--mobile-nav-height) - env(safe-area-inset-bottom) - 32px);padding-bottom:18px}
 .korea-filter-drawer.open{bottom:calc(var(--mobile-nav-height) + env(safe-area-inset-bottom) + 14px)}
-.korea-filter-drawer select{min-width:0;border-radius:8px;font-size:12px}
+.korea-filter-drawer select{min-width:0;border-radius:8px;font-size:13px}
 .korea-filter-drawer .filter-drawer-actions{padding-bottom:4px}
 .korea-car-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
 .korea-car-card{min-width:0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -133,8 +133,8 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-card-content{display:grid;gap:12px;padding:18px}
 .korea-order-label,.korea-reserved-label{display:inline-block;justify-self:start;padding:5px 9px;border-radius:6px;color:var(--red);background:#fff0f0;font-size:10px;font-weight:800}
 .korea-reserved-label{color:#71520a;background:#fff3ce}
-.korea-card-content h2{margin:0;font-size:21px;line-height:1.2;overflow-wrap:anywhere}
-.korea-card-meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:11px}
+.korea-card-content h2,.korea-card-content h3{margin:0;font-size:21px;line-height:1.2;overflow-wrap:anywhere}
+.korea-card-meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}
 .korea-card-price,.korea-detail-price{color:var(--red);font-size:25px;overflow-wrap:anywhere}
 .korea-catalogue-state{padding:35px 20px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 .korea-catalogue-state h2{margin:0 0 12px;font-size:26px;line-height:1.2}
@@ -149,7 +149,7 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:44px;padding:0;border:0;color:#fff;background:rgba(0,0,0,.58);font-size:29px;line-height:1;cursor:pointer}
 .korea-gallery-prev{left:0}
 .korea-gallery-next{right:0}
-.korea-gallery-counter{position:absolute;right:10px;bottom:10px;padding:5px 9px;color:#fff;background:rgba(0,0,0,.72);border-radius:4px;font-size:11px;pointer-events:none}
+.korea-gallery-counter{position:absolute;right:10px;bottom:10px;padding:5px 9px;color:#fff;background:rgba(0,0,0,.72);border-radius:4px;font-size:12px;pointer-events:none}
 .korea-detail-main-image .korea-image-frame img{object-fit:contain}
 .korea-detail-thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(65px,1fr));gap:8px;margin-top:10px}
 .korea-detail-thumbnail{min-width:0;padding:0;overflow:hidden;border:2px solid transparent;border-radius:8px;cursor:pointer;background:#e9e9ed}
@@ -159,17 +159,34 @@ body[data-page="home"] .home-actions .action-tile:last-child{grid-column:auto}
 .korea-detail-summary h1{margin:0;font-size:clamp(26px,5vw,38px);line-height:1.12;overflow-wrap:anywhere}
 .korea-detail-specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:4px 0}
 .korea-detail-specs>div:last-child{grid-column:1/-1}
-.korea-detail-specs dt{color:var(--muted);font-size:10px}
-.korea-detail-specs dd{margin:3px 0 0;font-size:12px;font-weight:700;overflow-wrap:anywhere}
-.korea-detail-note{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.korea-detail-specs dt{color:var(--muted);font-size:12px}
+.korea-detail-specs dd{margin:3px 0 0;font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.korea-detail-note{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
 .korea-detail-content:empty{display:none}
 .korea-detail-content{margin-top:22px;padding:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow-wrap:anywhere}
 .korea-detail-content h2{margin:0 0 14px;font-size:23px}
 .korea-detail-description{white-space:pre-line;font-size:13px;line-height:1.7}
-.korea-detail-features{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding-left:20px;font-size:12px}
+.korea-detail-features{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding-left:20px;font-size:13px}
 .korea-selected-vehicle{display:grid;gap:6px;margin-bottom:18px;padding:14px;border-left:3px solid var(--red);background:#fff0f0;font-size:12px;overflow-wrap:anywhere}
 .korea-selected-vehicle strong{font-size:18px}
 .korea-catalogue-page .button,.korea-detail-page .button{max-width:100%;white-space:normal;text-align:center;overflow-wrap:anywhere}
 .korea-catalogue-page :focus-visible,.korea-detail-page :focus-visible{outline:2px solid var(--red);outline-offset:3px}
 @media(min-width:640px){.korea-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-detail-features{grid-template-columns:repeat(2,minmax(0,1fr))}.korea-gallery-arrow{width:40px;height:54px}}
 @media(min-width:900px){.korea-desktop-filter-panel{grid-template-columns:minmax(0,1.5fr) repeat(5,minmax(0,1fr)) auto}.korea-catalogue-toolbar select{width:185px}.korea-car-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.korea-detail-layout{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}.korea-detail-section,.korea-catalogue-section{padding-bottom:75px}}
+
+/* Korea-only readability and storefront spacing. */
+body[data-page="korea"] .korea-preview{scroll-margin-top:78px;background:#fff}
+body[data-page="korea"] .korea-preview .korea-section-heading>p:last-child{margin:14px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
+body[data-page="korea"] .korea-preview-actions{display:flex;justify-content:center;margin-top:24px}
+body[data-page="korea"] .korea-preview-message{color:var(--muted);font-size:13px}
+body[data-page="korea"] .korea-step-number{margin-bottom:14px}
+body[data-page="korea"] .korea-process,body[data-page="korea"] .korea-payment,body[data-page="korea"] .korea-enquiry-section{padding-block:40px}
+body[data-page="korea"] .button{font-size:12px}
+.korea-car-card .button{font-size:12px}
+.korea-order-label,.korea-reserved-label{font-size:11px}
+.korea-desktop-filter-panel label>span,.korea-filter-drawer .filter-fields label>span{font-size:12px}
+.korea-desktop-filter-panel button,.korea-mobile-catalogue-bar>button{font-size:12px}
+.korea-mobile-catalogue-bar input{font-size:14px}
+.korea-catalogue-toolbar>div,.korea-catalogue-toolbar label>span{font-size:12px}
+.korea-catalogue-toolbar select{font-size:13px}
+@media(min-width:900px){body[data-page="korea"] .korea-process,body[data-page="korea"] .korea-payment,body[data-page="korea"] .korea-enquiry-section{padding-block:52px}}

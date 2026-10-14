@@ -101,6 +101,20 @@
     ["Готови сте да потърсим автомобил?", "Ready for us to find a vehicle?"], ["Свържете се с нас и кажете какво търсите.", "Contact us and tell us what you are looking for."]
   ];
   entries.push(
+    ["Виж всички автомобили", "View all vehicles"],
+    ["Предложенията временно не могат да се заредят.", "Vehicle offers are temporarily unavailable."],
+    ["Избирате предложение от сайта или ни изпращате автомобил, който сте намерили.", "Choose a listing from the website or send us a vehicle you have found."],
+    ["Организираме проверка и получавате наличната информация, снимки и видео.", "We arrange an inspection and you receive the available information, photos and video."],
+    ["При покупка се приспада от крайната цена.", "Deducted from the final price if you purchase."],
+    ["Вие одобрявате", "You approve"], ["Продължаваме само след Вашето потвърждение.", "We proceed only after you confirm."],
+    ["Договор и 30%", "Contract and 30%"],
+    ["След одобрение подписваме договор и се заплащат 30% от договорената сума.", "After approval, we sign a contract and 30% of the agreed amount is paid."],
+    ["Транспорт", "Transport"], ["Организираме покупката, износа и транспорта до България.", "We arrange the purchase, export and transport to Bulgaria."],
+    ["Получаване и 70%", "Handover and 70%"],
+    ["Останалите 70% се заплащат след пристигането в България, преди предаването.", "The remaining 70% is paid after arrival in Bulgaria, before handover."],
+    ["Какво се проверява?", "What is inspected?"],
+    ["Според автомобила и проверката получавате наличните снимки, видео и информация за състоянието, историята и оборудването.", "Depending on the vehicle and inspection, you receive available photos, video and information about condition, history and equipment."],
+    ["Срокът зависи от автомобила и транспорта. Очакваният срок се уточнява при поръчката.", "Timing depends on the vehicle and transport. The expected timeframe is clarified when ordering."],
     ["Най-нова година", "Newest year"], ["Затвори филтрите", "Close filters"],
     ["Предишна снимка", "Previous photo"], ["Следваща снимка", "Next photo"], ["Галерия на автомобила", "Vehicle gallery"],
     ["Година", "Year"], ["Задвижване", "Drivetrain"],

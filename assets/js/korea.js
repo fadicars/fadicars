@@ -3,6 +3,30 @@
   const status = document.getElementById("koreaFormStatus");
   if (!form || !status) return;
   const K = window.FadiKorea;
+  const preview = document.getElementById("koreaPreview");
+  let previewCars;
+  let previewFailed = false;
+  function renderPreview() {
+    if (!preview) return;
+    if (previewFailed) {
+      const message = K.node("p", "korea-preview-message", K.t("Предложенията временно не могат да се заредят."));
+      preview.replaceChildren(message);
+      return; // The permanent catalogue link remains available below the preview.
+    }
+    if (!previewCars) { preview.textContent = K.t("Зареждане на автомобили..."); return; }
+    if (!previewCars.length) { preview.textContent = K.t("Скоро ще добавим предложения"); return; }
+    const grid = K.node("div", "korea-car-grid");
+    previewCars.forEach((car, index) => grid.append(K.card(car, index, true)));
+    preview.replaceChildren(grid);
+  }
+  if (preview) {
+    K.load().then(records => {
+      previewCars = records.filter(K.active).slice(0, 6);
+      renderPreview();
+    }).catch(() => { previewFailed = true; renderPreview(); });
+    document.addEventListener("fadi:languagechange", renderPreview);
+    renderPreview();
+  }
   const selectedPanel = document.getElementById("koreaSelectedVehicle");
   const selectedId = new URLSearchParams(location.search).get("car");
   let selectedCar;
