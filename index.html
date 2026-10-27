@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#111114">
-  <meta name="description" content="FADI CARS е автокъща в София с актуален каталог на автомобили, информация за лизинг и директен контакт.">
+  <meta name="description" content="Налични автомобили в София и поръчка на автомобили от Южна Корея с проверка и доставка до България от FADI CARS.">
   <title>FADI CARS | Автокъща в София</title>
   <link rel="canonical" href="https://www.fadicars.com/">
   <meta property="og:title" content="FADI CARS | Автокъща в София">
-  <meta property="og:description" content="Разгледайте актуалния каталог с автомобили на FADI CARS в София и се свържете директно с автокъщата.">
+  <meta property="og:description" content="Налични автомобили в София и поръчка на автомобили от Южна Корея с проверка и доставка до България от FADI CARS.">
   <meta property="og:url" content="https://www.fadicars.com/">
   <meta property="og:site_name" content="FADI CARS">
   <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://www.fadicars.com/assets/images/fadi-cars-logo-dark.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="FADI CARS | Автокъща в София">
-  <meta name="twitter:description" content="Актуален каталог с автомобили от FADI CARS в София.">
+  <meta name="twitter:description" content="Налични автомобили в София и поръчка на автомобили от Южна Корея с проверка и доставка до България от FADI CARS.">
   <meta name="twitter:image" content="https://www.fadicars.com/assets/images/fadi-cars-logo-dark.png">
   <script type="application/ld+json">
     {
@@ -114,14 +114,42 @@
       <div class="container">
         <div class="home-intro-top">
           <div>
-            <p class="eyebrow">FADI CARS / ФАДИ КАРС • СОФИЯ</p>
-            <h1>Автомобили в наличност</h1>
-            <p>Разгледай актуалните предложения на автокъща FADI CARS в София.</p>
+            <p class="eyebrow">FADI CARS / СОФИЯ</p>
+            <h1>Автомобили в наличност и по поръчка от Корея</h1>
+            <p>Разгледай наличните автомобили в София или избери автомобил от Южна Корея с проверка и доставка до България.</p>
           </div>
-          <div class="stock-pill"><strong id="homeCarCount">77</strong><span>обяви</span></div>
         </div>
 
-        <form class="mobile-search-card" id="homeSearchForm">
+        <div class="home-actions">
+          <a class="action-tile action-red action-primary" href="/korea-cars"><span class="action-icon" aria-hidden="true">↗</span><div><strong>Автомобили от Корея</strong><small>Поръчка, проверка и доставка</small></div><b aria-hidden="true">→</b></a>
+          <a class="action-tile action-primary action-stock" href="/cars"><span class="action-icon" aria-hidden="true">▦</span><div><strong>Налични автомобили</strong><small>Разгледай автомобилите на място</small></div><b aria-hidden="true">→</b></a>
+          <a class="action-tile " href="/leasing"><span class="action-icon" aria-hidden="true">€</span><div><strong>Лизинг</strong><small>Възможности за финансиране</small></div><b aria-hidden="true">→</b></a>
+          <a class="action-tile " href="/contact"><span class="action-icon" aria-hidden="true">⌖</span><div><strong>Посети ни</strong><small>София, Суходол</small></div><b aria-hidden="true">→</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-korea-section" aria-labelledby="homeKoreaHeading">
+      <div class="container">
+        <div class="home-korea-intro">
+          <p class="eyebrow">ПОРЪЧКА ОТ КОРЕЯ</p>
+          <h2 id="homeKoreaHeading">Популярни предложения от Корея</h2>
+          <p class="home-section-copy">Разгледай актуални предложения и намери автомобил, който можем да проверим и доставим до България.</p>
+          <p class="home-korea-trust">Проверка • Договор • Доставка до България</p>
+          <div class="home-korea-actions"><a class="button button-red" href="/korea-cars">Виж всички автомобили от Корея</a><a class="button button-outline" href="/korea">Как работи поръчката</a></div>
+        </div>
+        <ul class="home-assurance"><li><span aria-hidden="true">✓</span><strong>Проверка на автомобила</strong></li><li><span aria-hidden="true">≡</span><strong>Ясни стъпки за поръчка</strong></li><li><span aria-hidden="true">↗</span><strong>Доставка до България</strong></li></ul>
+        <div id="homeKoreaCars" aria-live="polite" aria-busy="true"><p>Зареждане на автомобили...</p></div>
+      </div>
+    </section>
+
+    <section class="section latest-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">НАЛИЧНИ В СОФИЯ</p><h2>Актуални предложения</h2></div>
+          <a href="/cars">Виж всички</a>
+        </div>
+                <form class="mobile-search-card" id="homeSearchForm">
           <label>
             <span>Какъв автомобил търсиш?</span>
             <input id="homeSearchInput" type="search" placeholder="BMW X5, Audi A6, Mercedes...">
@@ -129,37 +157,6 @@
           <button type="submit">Търси</button>
         </form>
 
-        <div class="home-actions">
-          <a class="action-tile action-red" href="/cars">
-            <span class="action-icon">▦</span>
-            <div><strong>Всички автомобили</strong><small>Филтри, цени и снимки</small></div>
-            <b>→</b>
-          </a>
-          <a class="action-tile" href="/korea">
-            <span class="action-icon">↗</span>
-            <div><strong>Автомобили от Корея</strong><small>Поръчка, проверка и доставка</small></div>
-            <b>→</b>
-          </a>
-          <a class="action-tile" href="/leasing">
-            <span class="action-icon">€</span>
-            <div><strong>Лизинг</strong><small>Възможности за финансиране</small></div>
-            <b>→</b>
-          </a>
-          <a class="action-tile" href="/contact">
-            <span class="action-icon">⌖</span>
-            <div><strong>Посети ни</strong><small>София, Суходол</small></div>
-            <b>→</b>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section latest-section">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="eyebrow">ПОСЛЕДНО ДОБАВЕНИ</p><h2>Актуални предложения</h2></div>
-          <a href="/cars">Виж всички</a>
-        </div>
         <div class="mobile-car-rail vehicle-grid" id="latestCars"></div>
       </div>
     </section>
@@ -198,6 +195,7 @@
   <script src="assets/js/cars.js"></script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/core.js"></script>
+  <script src="assets/js/korea-data.js"></script>
   <script src="assets/js/home.js"></script>
 </body>
 </html>

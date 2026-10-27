@@ -198,3 +198,37 @@ body[data-page="korea"] .button{font-size:12px}
 .vehicle-image-link>.mobile-vehicle-status{position:absolute;bottom:10px;left:10px;max-width:calc(100% - 20px);box-shadow:0 2px 8px #0003}
 #detailVehicleStatus:empty{display:none}
 #detailVehicleStatus:not(:empty){margin-top:10px}
+
+/* Homepage: two core services, with Korea inventory before local stock. */
+body[data-page="home"] .home-intro{background:linear-gradient(135deg,#fff 60%,#fff1f1);padding:36px 0}
+body[data-page="home"] .home-intro-top{max-width:940px}
+body[data-page="home"] .home-intro h1{font-size:clamp(32px,4.5vw,58px);line-height:1.12;max-width:900px}
+body[data-page="home"] .home-intro-top p:last-child{font-size:16px;line-height:1.65;max-width:730px;margin-top:18px}
+body[data-page="home"] .eyebrow{font-size:12px;line-height:1.5}
+body[data-page="home"] .home-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+body[data-page="home"] .action-tile{padding:16px;grid-template-columns:1fr auto;gap:12px}
+body[data-page="home"] .action-icon{display:none}
+body[data-page="home"] .action-primary{grid-column:1/-1;min-height:104px}
+body[data-page="home"] .action-stock{border-color:#25252b;background:var(--ink);color:#fff}
+body[data-page="home"] .action-stock small,body[data-page="home"] .action-red small{color:#fff;opacity:.88}
+body[data-page="home"] .action-tile strong{font-size:15px;line-height:1.35}
+body[data-page="home"] .action-primary strong{font-size:21px}
+body[data-page="home"] .action-tile small{font-size:13px;line-height:1.5;margin-top:5px}
+.home-korea-section{background:#f5f5f7;border-bottom:1px solid var(--line)}
+.home-korea-intro{max-width:790px}
+.home-korea-intro h2{margin:0;font-size:clamp(28px,3.5vw,42px);line-height:1.15;letter-spacing:-.025em}
+.home-section-copy{color:var(--muted);font-size:16px;line-height:1.7}
+.home-korea-trust{font-size:14px;font-weight:700;line-height:1.7}
+.home-korea-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.home-korea-actions .button{font-size:14px;line-height:1.45;min-height:48px}
+.home-assurance{list-style:none;padding:0;margin:30px 0;display:grid;gap:12px}
+.home-assurance li{display:flex;align-items:center;gap:12px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:12px;font-size:14px}
+.home-assurance span{color:var(--red);font-size:22px}
+body[data-page="home"] .korea-card-content h3{margin:0;font-size:20px;line-height:1.3}
+body[data-page="home"] .korea-order-label{font-size:12px}
+body[data-page="home"] .latest-section .mobile-search-card{margin:0 0 22px}
+body[data-page="home"] .mobile-search-card label span{font-size:12px}
+body[data-page="home"] .section-heading>a{font-size:13px}
+body[data-page="home"] .site-nav a[href="/korea"]{color:#fff;box-shadow:inset 0 -3px var(--red)}
+@media(min-width:640px){.home-assurance{grid-template-columns:repeat(3,minmax(0,1fr))}body[data-page="home"] .action-primary{grid-column:auto}body[data-page="home"] .home-actions .action-primary{min-height:145px}body[data-page="home"] .home-actions{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-page="home"] .korea-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){body[data-page="home"] .home-intro{padding:60px 0 42px}body[data-page="home"] .korea-car-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

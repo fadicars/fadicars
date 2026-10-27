@@ -156,6 +156,23 @@
     ["Допълнителна информация за автомобила е налична при запитване.","Further vehicle information is available on request."],
     ["За разглеждане на автомобилите включете JavaScript или се свържете с нас.","Enable JavaScript to browse vehicles or contact us."]
   );
+  entries.push(
+    ["FADI CARS / СОФИЯ","FADI CARS / SOFIA"],
+    ["Автомобили в наличност и по поръчка от Корея","Vehicles in stock and available to order from Korea"],
+    ["Разгледай наличните автомобили в София или избери автомобил от Южна Корея с проверка и доставка до България.","Browse our available vehicles in Sofia or choose a vehicle from South Korea with inspection and delivery to Bulgaria."],
+    ["Налични автомобили","Vehicles in stock"],
+    ["Разгледай автомобилите на място","View our vehicles in person"],
+    ["ПОРЪЧКА ОТ КОРЕЯ","ORDER FROM KOREA"],
+    ["Популярни предложения от Корея","Popular vehicles from Korea"],
+    ["Разгледай актуални предложения и намери автомобил, който можем да проверим и доставим до България.","Browse current listings and find a vehicle we can inspect and deliver to Bulgaria."],
+    ["Проверка • Договор • Доставка до България","Inspection • Contract • Delivery to Bulgaria"],
+    ["Виж всички автомобили от Корея","View all vehicles from Korea"],
+    ["Как работи поръчката","How ordering works"],
+    ["Проверка на автомобила","Vehicle inspection"],
+    ["Ясни стъпки за поръчка","Clear ordering steps"],
+    ["НАЛИЧНИ В СОФИЯ","IN STOCK IN SOFIA"],
+    ["Налични автомобили в София и поръчка на автомобили от Южна Корея с проверка и доставка до България от FADI CARS.","Vehicles in stock in Sofia and vehicles to order from South Korea, with inspection and delivery to Bulgaria by FADI CARS."]
+  );
   const dictionary = new Map(entries);
   const vehicleValues = new Map(Object.entries({
     "дизел": "Diesel", "дизелов": "Diesel", "бензин": "Petrol", "бензинов": "Petrol",
